@@ -1,4 +1,4 @@
-# DesRUTGe: a DFL Simulation Project for traffic generation
+# DesRUTGe: Realistic Urban Traffic Generator using Decentralized Federated Learning for the SUMO simulator
 
 The project **DesRUTGe** has been adapted to simulate environments for Decentralized Federated Learning (DFL), specifically focused on federating a traffic generator called DesRUTGe. This adaptation enables multiple nodes to collaboratively train and optimize traffic generation models without sharing their local data, allowing exploration of network topologies and model aggregation strategies in a decentralized context.
 
@@ -70,10 +70,15 @@ Configuration parameters (more details in the source code):
 - Output file (`-o`): name of the output file.
 - Server (`-s`): ID of the server in the network topology (only in centralized simulations)
 
+## ACKNOWLEDGMENT
+
+This work was supported by the Spanish Government under research project ``Enhancing Communication Protocols with Machine Learning while Protecting Sensitive Data ([COMPROMISE](http://www.compromise.upc.edu/))" PID2020-113795RB-C32/C33, funded by MICIU/AEI/10.13039/501100011033.
+![alt text](http://www.compromise.upc.edu/images/MICIU+AEI-COMPROMISE.jpg)
+
 ## License
 
 This project is licensed under the GNU GPLv3 License. See the LICENSE file for more details.
 
 ## Contact
 
-For questions or suggestions, contact the author at dcajaraville@det.uvigo.es.
+For questions or suggestions, contact the author at alberto.bazan@upc.edu.
