@@ -1,6 +1,3 @@
-# Ignore downloaded data by PyTorch
-data/*
-
 # Ignore output files from the simulators
 logs/*
 output/*
