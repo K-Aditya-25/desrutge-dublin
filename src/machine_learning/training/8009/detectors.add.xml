@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-02-17 18:20:02 by Eclipse SUMO netedit Version 1.20.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Detectors -->
+    <inductionLoop id="mitre_torras" lane="237506959#1_2" pos="0.38" period="900.00" file="AM_8009.xml"/>
+
+    <inductionLoop id="mitre_torras2" lane="237506959#1_0" pos="0.46" period="900.00" file="AM_8009b.xml"/>
+
+    <inductionLoop id="mitre_torras4" lane="198597865#1_0" pos="0.57" period="900.00" file="AM_8009d.xml"/>
+    <inductionLoop id="mitre_torras5" lane="198597865#1_2" pos="1.49" period="900.00" file="AM_8009e.xml"/>
+    <inductionLoop id="mitre_torras6" lane="294056755#1_0" pos="15.22" period="900.00" file="AM_8009f.xml"/>
+
+    <inductionLoop id="mitre_torras8" lane="294056755#1_2" pos="15.02" period="900.00" file="AM_8009h.xml"/>
+
+</additional>

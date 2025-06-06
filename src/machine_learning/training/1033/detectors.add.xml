@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-02-18 15:04:49 by Eclipse SUMO netedit Version 1.20.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Detectors -->
+    <inductionLoop id="CarlesIII_Baxada1" lane="367979558#1_2" pos="144.44" period="900.00" file="AM_1033a.xml"/>
+    <inductionLoop id="CarlesIII_Baxada2" lane="367979558#1_1" pos="144.37" period="900.00" file="AM_1033b.xml"/>
+    <inductionLoop id="CarlesIII_Baxada3" lane="367979558#1_0" pos="144.76" period="900.00" file="AM_1033c.xml"/>
+    <inductionLoop id="CarlesIII_Baxada4" lane="544124173#0_1" pos="23.98" period="900.00" file="AM_1033d.xml"/>
+    <inductionLoop id="CarlesIII_Baxada5" lane="544124173#0_2" pos="23.73" period="900.00" file="AM_1033e.xml"/>
+    <inductionLoop id="CarlesIII_Baxada6" lane="544124173#0_0" pos="23.86" period="900.00" file="AM_1033f.xml"/>
+    <inductionLoop id="CarlesIII_Baxada8" lane="544124173#0_3" pos="23.51" period="900.00" file="AM_1033h.xml"/>
+    <inductionLoop id="CarlesIII_Baxada9" lane="-544641225#2_0" pos="48.62" period="900.00" file="AM_1033i.xml"/>
+    <inductionLoop id="CarlesIII_Baxadaa" lane="-544641225#2_1" pos="48.23" period="900.00" file="AM_1033j.xml"/>
+    <inductionLoop id="CarlesIII_Baxadaf" lane="542495910#1_0" pos="254.90" period="900.00" file="AM_1033o.xml"/>
+    <inductionLoop id="CarlesIII_Baxadag" lane="542495910#1_1" pos="254.61" period="900.00" file="AM_1033p.xml"/>
+</additional>

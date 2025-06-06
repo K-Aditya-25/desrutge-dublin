@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-02-17 18:28:10 by Eclipse SUMO netedit Version 1.20.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Detectors -->
+    <inductionLoop id="mitre_ganduxer" lane="294493312#4_0" pos="11.88" period="900.00" file="AM_8008.xml"/>
+    <inductionLoop id="mitre_ganduxer1" lane="294493312#4_1" pos="11.36" period="900.00" file="AM_8008a.xml"/>
+    <inductionLoop id="mitre_ganduxer2" lane="294493312#4_2" pos="12.00" period="900.00" file="AM_8008b.xml"/>
+    <inductionLoop id="mitre_ganduxer3" lane="294493312#4_3" pos="11.74" period="900.00" file="AM_8008c.xml"/>
+
+</additional>

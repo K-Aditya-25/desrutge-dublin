@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-02-17 18:49:09 by Eclipse SUMO netedit Version 1.20.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Detectors -->
+    <inductionLoop id="Corsega" lane="309896347#5_0" pos="22.47" period="900.00" file="AM_4043.xml"/>
+    <inductionLoop id="Corsega1" lane="309896347#5_1" pos="22.55" period="900.00" file="AM_4043a.xml"/>
+
+    <inductionLoop id="Corsega3" lane="31029327#0_0" pos="12.28" period="900.00" file="AM_4043c.xml"/>
+    
+</additional>

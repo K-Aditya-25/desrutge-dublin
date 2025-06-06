@@ -1,0 +1,9 @@
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Detectors -->
+    <!-- 2005 Entenza / Provenza (sentit muntanya) -->
+    <inductionLoop id="entenza" lane="1097003670#6_0" pos="20" period="900"
+        file="AM_2005.xml" friendlyPos="true" />
+
+    <inductionLoop id="entenza2" lane="1097003670#6_2" pos="20" period="900"
+        file="AM_2005b.xml" friendlyPos="true" />
+</additional>

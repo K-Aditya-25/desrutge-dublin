@@ -1,0 +1,9 @@
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Detectors -->
+    <!-- 4010 Pg Sant Joan / valencia (Baixada) -->
+    <inductionLoop id="Valencia" lane="1080039480#3_0" pos="20" period="900"
+        file="AM_4010.xml" friendlyPos="true" />
+
+    <inductionLoop id="Valencia2" lane="1080039480#3_2" pos="20" period="900"
+        file="AM_4010b.xml" friendlyPos="true" />
+</additional>
