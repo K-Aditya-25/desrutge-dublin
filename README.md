@@ -54,7 +54,7 @@ To run the simulation, use the following command (it is one example):
 ```bash
 python3 ./src/main_sim_decentralized.py -r 1 -t './config/voronoi_traffic_detectors.json' -a "Mean" -db "Traffic_Generator" -o "./output/decentralized_sim/decentralized_mean.json"
 
-python3 ./src/main_sim_centralized.py -r 1 -s 0 -t './config/centralized_traffic_detectors.json' -a "Mean" -db "Traffic_Generator" -o "./output/centralized_sim/centralized_mean.json"
+python3 ./src/main_sim_centralized.py -r 1 -s 0 -t './config/centralized.json' -a "Mean" -db "Traffic_Generator" -o "./output/centralized_sim/centralized_mean.json"
 ```
 
 Configuration parameters (more details in the source code):
