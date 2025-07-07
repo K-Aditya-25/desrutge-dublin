@@ -167,8 +167,8 @@ def centralized_simulation(
 
     clients_config = nodes_config.copy()
     del clients_config[sim_config["server_id"]]
-    barrier_sim = threading.Barrier(len(clients_config))      # Synchronization barrier for nodes
-
+    barrier_sim = ProcessBarrier(len(clients_config))      # Synchronization barrier for nodes
+    
     for index, (key, value) in enumerate(clients_config.items()):
         if value['id'] in sim_config["malicious_nodes"]:
             # Create instances of MaliciousCentralizedNode
@@ -204,27 +204,45 @@ def centralized_simulation(
                 conf_nodes=sim_config["conf_nodes"],
                 barrier_sim=barrier_sim
             )
-        
-    # Run the training process in separate threads for each node
-    threads = []
-    for key, centralized_node in nodes.items():
-        t = threading.Thread(target=centralized_node.run)
-        # t = multiprocessing.Process(target=centralized_node.run)
-        t.start()
-        threads.append(t)
-
-    # Wait for all threads to finish
-    for t in threads:
-        t.join()
-
-    simulation_results = nodes[sim_config["server_id"]].statistics
-    return simulation_results
-    # simulation_results = {
-    #     "accuracy": nodes[sim_config["server_id"]].statistics["accuracy"],
-    #     "loss": nodes[sim_config["server_id"]].statistics["loss"]
-    # }
     
-    # return simulation_results
+    TaskExecutor = multiprocessing.Process 
+    manager = multiprocessing.Manager()
+    shared_results = manager.dict()
+    shared_models = manager.dict()
+    
+    # Run the training process in separate threads/process for each node
+    # tasks: List[Union[threading.Thread, multiprocessing.Process]] = []
+    tasks = []
+    for key, centralized_node in nodes.items():
+        print("Node ID init:", centralized_node.node_id)
+        task = TaskExecutor(target=run_node, args=(centralized_node, shared_results, shared_models))
+        task.start()
+        tasks.append(task)
+    
+    # Wait for all threads to finish
+    for task in tasks:
+        task.join()
+        print("Task joined")
+    
+    evaluate_metrics = shared_results[next(iter(shared_results))].keys()
+    simulation_results = {metric: {} for metric in evaluate_metrics}
+    
+    for key, node_statistics in shared_results.items():
+        if key == sim_config["server_id"]:
+            for metric in evaluate_metrics:
+                simulation_results[metric][key] = node_statistics[metric]
+    
+    # Save models - not very efficient, but non shared memory of multiprocessing is not easy to handle
+    # for key, node_statistics in shared_models.items():
+    #     last_model = node_statistics[-1]
+    #     config_aux = sim_config["conf_nodes"].copy()
+    #     config_aux["node_id"] = key
+    #     model_aux = model_class(config_aux)
+    #     model_aux.train_model(trainloaders[0], config_aux)
+    #     model_aux.set_params(last_model)
+    #     model_aux.model.save("./ppo_simulador_prueba_" + str(key) + ".zip")
+    
+    return simulation_results
     
 def run_node(node, shared_results, shared_models):
     node.run()

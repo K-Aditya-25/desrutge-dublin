@@ -4,14 +4,18 @@ import json
 from utils.utils_logs import *
 from machine_learning.dataset.MNIST import load_MNIST
 from machine_learning.dataset.CIFAR10 import load_CIFAR10
+from machine_learning.dataset.Traffic_Generator import load_Traffic_Generator
 from machine_learning.dataset.utils import prepare_dataset
+from machine_learning.dataset.Traffic_Generator import prepare_dataset_Traffic
 from machine_learning.training.MNIST import MNIST_Net
 from machine_learning.training.CIFAR10 import CIFAR10_Net
+from machine_learning.training.Traffic_Generator import Traffic_Generation_Algorithms
 from simulator.simulation import centralized_simulation
 
 MODEL_CLASSES = {
     "MNIST": MNIST_Net,
     "CIFAR-10": CIFAR10_Net,
+    "Traffic_Generator": Traffic_Generation_Algorithms
 }
 
 def main(args, nodes_config):
@@ -29,7 +33,7 @@ def main(args, nodes_config):
             # "num_classes": 10,
             "epochs": 1,
             "DEVICE": None,
-            "show_progress": False,
+            "show_progress": False
         }
     }
 
@@ -60,10 +64,15 @@ def main(args, nodes_config):
         trainset, testset = load_MNIST()
     elif sim_config["dataset"] == "CIFAR-10":
         trainset, testset = load_CIFAR10()
+    elif sim_config["dataset"] == "Traffic_Generator":
+        dataset = load_Traffic_Generator()
 
-    trainloaders, valloaders, testloader = prepare_dataset(
-        trainset, testset, num_partitions=(len(nodes_config)-1), batch_size_client=32, batch_size_test=128, val_ratio=0.1
-    )
+    if sim_config["dataset"] == "MNIST" or sim_config["dataset"] == "CIFAR-10":
+        trainloaders, valloaders, testloader = prepare_dataset(
+            trainset, testset, num_partitions=(len(nodes_config)-1), batch_size_client=32, batch_size_test=128, val_ratio=0.1
+        )
+    elif sim_config["dataset"] == "Traffic_Generator":
+        trainloaders, valloaders, testloader = prepare_dataset_Traffic(dataset)
     
     model_class = MODEL_CLASSES.get(sim_config["dataset"])
     
