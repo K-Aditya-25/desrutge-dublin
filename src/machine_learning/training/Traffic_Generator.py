@@ -111,7 +111,7 @@ class Traffic_Generation_Algorithms:
                 e = (target[i] * Norma) - aux
 
             
-            if ( env.done == True ):
+            if ( done == True ):
                 dones = dones + 1
             
             error = error + e
@@ -128,6 +128,25 @@ class Traffic_Generation_Algorithms:
             "output": MAE,
             "target": target[-1] * Norma
         }
+    
+    def init_model(self, trainloader, conf):
+        """Init the ML algorithm on the training set."""
+        if self.model == None:
+            target = np.mean(trainloader) / Norma
+            env = CustomEnv(target, Norma, conf["node_id"])
+            self.model = PPO('MlpPolicy', env,
+                    learning_rate=0.0003,
+                    n_steps=64,
+                    batch_size=64,
+                    n_epochs=4,
+                    gamma=0.95,
+                    gae_lambda=0.95,
+                    clip_range=0.2,
+                    ent_coef=0.01,
+                    vf_coef=0.5,
+                    max_grad_norm=0.5,
+                    verbose=1)
+        return
 
 
 class CustomEnv(gym.Env):
@@ -153,8 +172,9 @@ class CustomEnv(gym.Env):
         self.state = np.clip(self.state + self.state * multiplicador, 0.001, 3)
         coches = self.state * self.target
         
-        output, self.remanente = self.generate_output_SUMO(coches)
-
+        # output, self.remanente = self.generate_output_SUMO(coches)
+        output, self.remanente = self.generate_output_Test(coches)
+        
         reward = -np.abs(self.target - output)
         self.num_steps += 1
 
@@ -199,3 +219,17 @@ class CustomEnv(gym.Env):
 
         return output, remanente
     
+    def generate_output_Test(self, state):
+        
+        remanente = [0] * 24
+
+        a = int(state)
+        a = a * self.Norma
+        
+        output = -6.47e-05 * a + 0.7171 * a + 0.3595
+
+        output = output / self.Norma
+
+        self.out = output
+
+        return output, remanente

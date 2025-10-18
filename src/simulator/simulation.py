@@ -228,7 +228,7 @@ def centralized_simulation(
     simulation_results = {metric: {} for metric in evaluate_metrics}
     
     for key, node_statistics in shared_results.items():
-        if key == sim_config["server_id"]:
+        if str(key) == sim_config["server_id"]:
             for metric in evaluate_metrics:
                 simulation_results[metric][key] = node_statistics[metric]
     

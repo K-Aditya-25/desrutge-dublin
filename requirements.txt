@@ -12,6 +12,5 @@ mpltex==0.7
 scikit-learn==1.4.1
 stable-baselines3==2.2.1
 gym==0.26.2
-
 lxml
 colorama

@@ -52,6 +52,9 @@ class ParameterServer(DistributedNode):
             # Training phase
             log_info_node(self.node_id, f"Round {round_num}. Waiting for model updates from clients...")
             
+            if round_num == 0:
+                self.model.init_model(self.testloader, self.conf_nodes)
+            
             # Simulate sharing time interval
             while True:
                 time.sleep(5)

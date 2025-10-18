@@ -17,6 +17,9 @@ The project **DesRUTGe** has been adapted to simulate environments for Decentral
 - Libraries:
   - torch==2.0.1
   - torchvision==0.15.2
+  - scikit-learn==1.4.1
+  - stable_baselines3==2.2.1
+  - gym==0.26.2
   - numpy==1.24.1
   - pandas==1.5.3
   - urllib3==1.26.7
@@ -26,7 +29,8 @@ The project **DesRUTGe** has been adapted to simulate environments for Decentral
   - argparse==1.1
   - matplotlib==3.7.1
   - mpltex==0.7
-  - colorama
+  - colorama==0.4.6
+  - lxml
 
 ## Installation
 
@@ -69,6 +73,13 @@ Configuration parameters (more details in the source code):
 - Database (`-db`): Selected dataset for this simulation.
 - Output file (`-o`): name of the output file.
 - Server (`-s`): ID of the server in the network topology (only in centralized simulations)
+
+## Reference to the Paper
+
+This code was originally presented in the following publication:
+> **Alberto Bazán-Guillén, Carlos Beis-Penedo, Diego Cajaraville-Aboy, Pablo Barbecho-Bautista, Rebeca P. Díaz-Redondo, Luis J. de la Cruz Llopis, Ana Fernández-Vilas, Mónica Aguilar Igartua, Manuel Fernández-Veiga**, *"Realistic Urban Traffic Generator using Decentralized Federated Learning for the SUMO simulator"*, IEEE Open Journal of the Communications Society, ISSN: 2644-125X, 8th August 2025, **DOI:** [10.1109/OJCOMS.2025.3597019](https://ieeexplore.ieee.org/document/11121363).
+
+If you use or modify this code in your research, please cite the paper to acknowledge the original work.
 
 ## ACKNOWLEDGMENT
 
