@@ -1,6 +1,6 @@
 import argparse
 import json
-
+import os
 from utils.utils_logs import *
 from machine_learning.dataset.MNIST import load_MNIST
 from machine_learning.dataset.CIFAR10 import load_CIFAR10
@@ -87,6 +87,8 @@ def main(args, nodes_config):
     log_success(simulation_results)
     
     file_name = args.output
+    # Create directory if it doesn't exist
+    os.makedirs(os.path.dirname(file_name), exist_ok=True)
     with open( file_name,  "w" ) as f:
         json.dump(simulation_results, f, indent=2)
 
