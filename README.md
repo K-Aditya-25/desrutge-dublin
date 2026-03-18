@@ -71,8 +71,43 @@ Configuration parameters (more details in the source code):
 - Aggregation algorithm (`-a`): Selected Byzantine-robust algorithm
 - Algorithm parameters (`-p2`): Parameters for aggregation scheme config.
 - Database (`-db`): Selected dataset for this simulation.
+- Traffic data path (`--trafficDataPath`): Directory containing `detector_data.csv` for the `Traffic_Generator` dataset.
 - Output file (`-o`): name of the output file.
 - Server (`-s`): ID of the server in the network topology (only in centralized simulations)
+
+## Dublin SCATS preprocessing
+
+The public repository does not include the original Barcelona traffic counts. To prepare Dublin SCATS data for the
+`Traffic_Generator` pipeline, convert the hourly detector data into one 24-hour target profile per site:
+
+```bash
+python3 ./scripts/preprocess_dublin_scats.py \
+  --hourly-data /path/to/dublin_hourly_counts.csv \
+  --site-metadata /path/to/dublin_site_locations.csv \
+  --dayfirst \
+  --mode paper-faithful \
+  --output-dir ./data/TrafficGeneration/dublin \
+  --topology-output ./config/dublin_geographic_topology.json
+```
+
+This generates:
+
+- `detector_data.csv`: repo-compatible site-level targets in the format `site_id,h00,...,h23`
+- `site_metadata.csv`: merged metadata, coverage metrics, and quality flags for node selection
+- `site_hourly_targets_long.csv` and `site_date_hour_totals.csv` in `paper-faithful` mode
+- `preprocessing_summary.json`: a machine-readable summary of retained/rejected sites
+
+You can then point the simulation at the generated Dublin dataset without overwriting the placeholder file:
+
+```bash
+python3 ./src/main_sim_decentralized.py \
+  -r 1 \
+  -t ./config/dublin_geographic_topology.json \
+  -a Mean \
+  -db Traffic_Generator \
+  --trafficDataPath ./data/TrafficGeneration/dublin/ \
+  -o ./output/decentralized_sim/dublin_mean.json
+```
 
 ## Reference to the Paper
 
