@@ -1,12 +1,8 @@
 import pandas as pd
-import torch
-import numpy as np
-import random
-from torch.utils.data import DataLoader, Dataset, Subset, random_split
+from pathlib import Path
 from utils.utils_logs import *
-from collections import Counter
 
-class Traffic_Generator(Dataset):
+class Traffic_Generator:
     def __init__(self, csv_path: str, transform=None):
         """
         PyTorch approach for modelling CSV datasets.
@@ -16,14 +12,38 @@ class Traffic_Generator(Dataset):
             transform (callable, optional): Transformaciones a aplicar a las entradas.
         """
         # PREPARE GLOBAL DATASET
-        df = pd.read_csv(csv_path + "detector_data.csv")
+        dataset_path = Path(csv_path) / "detector_data.csv"
+        df = pd.read_csv(dataset_path)
         df.dropna(inplace=True)
+        self._validate_traffic_profile(df)
 
         # ATTRIBUTES OF DATASET (DEFINITION)
         log_info("Example of the dataset:")
         print(df.head(2))
         self.data = df.values
         self.columns = df.columns
+
+    def _validate_traffic_profile(self, df: pd.DataFrame) -> None:
+        expected_columns = 25
+        if df.shape[1] != expected_columns:
+            raise ValueError(
+                "Traffic_Generator expects one site_id column plus 24 hourly targets. "
+                f"Found {df.shape[1]} columns instead of {expected_columns}."
+            )
+
+        expected_hour_columns = [f"h{hour:02d}" for hour in range(24)]
+        if list(df.columns[1:]) != expected_hour_columns:
+            raise ValueError(
+                "Traffic_Generator expects hourly columns named h00..h23 in order. "
+                f"Found {list(df.columns[1:])}."
+            )
+
+        numeric_targets = df.iloc[:, 1:].apply(pd.to_numeric, errors="coerce")
+        if numeric_targets.isna().any().any():
+            raise ValueError("Traffic_Generator found non-numeric hourly traffic targets in detector_data.csv.")
+
+        if (numeric_targets < 0).any().any():
+            raise ValueError("Traffic_Generator found negative hourly traffic targets in detector_data.csv.")
         
     def __len__(self):
         return len(self.data)

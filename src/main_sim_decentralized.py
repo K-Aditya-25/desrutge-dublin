@@ -66,7 +66,7 @@ def main(args, nodes_config):
     elif sim_config["dataset"] == "CIFAR-10":
         trainset, testset = load_CIFAR10()
     elif sim_config["dataset"] == "Traffic_Generator":
-        dataset = load_Traffic_Generator()
+        dataset = load_Traffic_Generator(args.trafficDataPath)
 
     if sim_config["dataset"] == "MNIST" or sim_config["dataset"] == "CIFAR-10":
         trainloaders, valloaders, testloader = prepare_dataset(
@@ -106,6 +106,13 @@ if __name__ == "__main__":
                         choices=["Mean", "Krum", "Median", "Multi-Krum", "Trimmed-Mean", "Clustering", "WFAgg-D", "WFAgg-C", "WFAgg-T", "WFAgg-E", "Alt-WFAgg", "WFAgg"])
     parser.add_argument("-db", "--dataset", type=str, help="Selected dataset for this simulation", required=True,
                         choices=["MNIST", "CIFAR-10", "Traffic_Generator"])
+    parser.add_argument(
+        "--trafficDataPath",
+        type=str,
+        help="Directory containing detector_data.csv for the Traffic_Generator dataset",
+        required=False,
+        default="./data/TrafficGeneration/",
+    )
     parser.add_argument("-p1", "--paramsAtk", type=float, nargs='+', help="Parameters for attack config", required=False, default=[])
     parser.add_argument("-p2", "--paramsAgg", type=float, nargs='+', help="Parameters for aggregation config", required=False, default=[])
     parser.add_argument("-o", "--output", type=str, help="Name of the output file", required=True)

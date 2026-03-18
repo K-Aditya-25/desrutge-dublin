@@ -1,4 +1,19 @@
-from colorama import Fore, Style
+try:
+    from colorama import Fore, Style
+except ImportError:
+    class _NoColor:
+        BLACK = ""
+        BLUE = ""
+        CYAN = ""
+        GREEN = ""
+        MAGENTA = ""
+        RED = ""
+        WHITE = ""
+        YELLOW = ""
+        RESET_ALL = ""
+
+    Fore = _NoColor()
+    Style = _NoColor()
 
 def log_info(message):
     print(f"{Fore.BLUE}[INFO]{Style.RESET_ALL} {message}")
