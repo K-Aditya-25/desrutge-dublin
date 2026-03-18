@@ -179,3 +179,7 @@ design.md
 HandoffPrompt.md
 progress.md
 RunningSummary.md
+
+#separate files
+src/machine_learning/training/*/osm_dublin_bigger.net.xml
+src/machine_learning/training/*/*.net.xml
