@@ -110,7 +110,7 @@ def run_centralised(epochs: int, lr: float, momentum: float = 0.9):
 
     # get dataset and construct a dataloaders
     trainset, testset = load_MNIST()
-    trainloader = DataLoader(trainset, batch_size=64, shuffle=True, num_workers=2)
+    trainloader = DataLoader(trainset, batch_size=64, shuffle=True, num_workers=0)
     testloader = DataLoader(testset, batch_size=128)
 
     # train for the specified number of epochs
