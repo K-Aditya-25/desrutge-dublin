@@ -33,7 +33,8 @@ def main(args, nodes_config):
             # "num_classes": 10,
             "epochs": 1,
             "DEVICE": None,
-            "show_progress": False
+            "show_progress": False,
+            "traffic_simulation_mode": args.trafficSimulationMode
         }
     }
 
@@ -113,6 +114,14 @@ if __name__ == "__main__":
         help="Directory containing detector_data.csv for the Traffic_Generator dataset",
         required=False,
         default="./data/TrafficGeneration/",
+    )
+    parser.add_argument(
+        "--trafficSimulationMode",
+        type=str,
+        help="Traffic_Generator backend: 'sumo' for paper-faithful evaluation or 'test' for the surrogate path.",
+        required=False,
+        choices=["sumo", "test"],
+        default="sumo",
     )
     parser.add_argument("-p1", "--paramsAtk", type=float, nargs='+', help="Parameters for attack config", required=False, default=[])
     parser.add_argument("-p2", "--paramsAgg", type=float, nargs='+', help="Parameters for aggregation config", required=False, default=[])

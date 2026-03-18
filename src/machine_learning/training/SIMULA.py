@@ -23,6 +23,22 @@ def find_det(det):
     return file_path
 
 
+def find_net_file(det):
+
+    ruta = det + "/sim.sumocfg"
+    tree = ET.parse(ruta)
+    root = tree.getroot()
+    net_file = root.find("./input/net-file")
+    if net_file is None:
+        raise RuntimeError("sim.sumocfg is missing the configured net-file.")
+
+    value = net_file.get("value")
+    if not value:
+        raise RuntimeError("sim.sumocfg has an empty net-file value.")
+
+    return det + "/" + value
+
+
 ############### Crear el archivo OD ##########################
 def crear_OD( cant_coches, det ):
     
@@ -92,7 +108,7 @@ def validar_trips(det):
 
 def crear_rutas(det):
     # Definir el comando y sus argumentos
-    network_file = det + "/osm.net.xml"
+    network_file = find_net_file(det)
     trips_file = det + "/trips_via.xml"
     output_routes = det + "/routes.rou.xml"
     additional_file = det + "/miniTAZ.xml"

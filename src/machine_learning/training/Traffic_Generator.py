@@ -2,8 +2,6 @@ from collections import OrderedDict
 from sklearn.metrics import *
 
 from stable_baselines3 import PPO
-from itertools import zip_longest
-
 
 import time
 
@@ -15,9 +13,22 @@ import numpy as np
 import torch
 
 from .SIMULA import simulacion
+from .sumo_site_metrics import combine_hourly_profiles, profile_mean
 
 #Normalizacion global
 Norma = 10000
+DEFAULT_TRAFFIC_SIMULATION_MODE = "sumo"
+SUPPORTED_TRAFFIC_SIMULATION_MODES = {"sumo", "test"}
+
+
+def resolve_traffic_simulation_mode(conf):
+    mode = str(conf.get("traffic_simulation_mode", DEFAULT_TRAFFIC_SIMULATION_MODE)).lower()
+    if mode not in SUPPORTED_TRAFFIC_SIMULATION_MODES:
+        raise ValueError(
+            "Unsupported traffic_simulation_mode "
+            f"{mode!r}. Expected one of {sorted(SUPPORTED_TRAFFIC_SIMULATION_MODES)}."
+        )
+    return mode
 
 # #############################################################################
 # General ML Pipeline: Model Training, and Testing
@@ -30,6 +41,14 @@ class Traffic_Generation_Algorithms:
         self.model = None
         self.trained_rounds = 0
         print("T0:", time.time())
+
+    def _build_env(self, target, conf):
+        return CustomEnv(
+            target,
+            Norma,
+            conf["node_id"],
+            resolve_traffic_simulation_mode(conf),
+        )
     
     def get_params(self):
         model_params = [val.cpu().numpy() for _, val in self.model.policy.state_dict().items()]
@@ -56,7 +75,7 @@ class Traffic_Generation_Algorithms:
 
             target = np.mean(trainloader) / Norma
 
-            env = CustomEnv(target, Norma, conf["node_id"])
+            env = self._build_env(target, conf)
         
             self.model = PPO('MlpPolicy', env,
                     learning_rate=0.0003,
@@ -89,7 +108,7 @@ class Traffic_Generation_Algorithms:
 
         for i in range(num_episodes):
 
-            env = CustomEnv(target[i], Norma, conf["node_id"])
+            env = self._build_env(target[i], conf)
 
             obs = env.reset()
             done = False
@@ -133,7 +152,7 @@ class Traffic_Generation_Algorithms:
         """Init the ML algorithm on the training set."""
         if self.model == None:
             target = np.mean(trainloader) / Norma
-            env = CustomEnv(target, Norma, conf["node_id"])
+            env = self._build_env(target, conf)
             self.model = PPO('MlpPolicy', env,
                     learning_rate=0.0003,
                     n_steps=64,
@@ -150,7 +169,7 @@ class Traffic_Generation_Algorithms:
 
 
 class CustomEnv(gym.Env):
-    def __init__(self, target, Norma, node_id):
+    def __init__(self, target, Norma, node_id, traffic_simulation_mode=DEFAULT_TRAFFIC_SIMULATION_MODE):
         super(CustomEnv, self).__init__()
         self.target = target
         self.observation_space = spaces.Box(low=0, high=3, shape=(1,), dtype=np.float32)
@@ -164,6 +183,7 @@ class CustomEnv(gym.Env):
 
         self.Norma = Norma
         self.node_id = node_id
+        self.traffic_simulation_mode = traffic_simulation_mode
 
     def step(self, action):
         multiplicador = action[0]
@@ -171,9 +191,11 @@ class CustomEnv(gym.Env):
 
         self.state = np.clip(self.state + self.state * multiplicador, 0.001, 3)
         coches = self.state * self.target
-        
-        # output, self.remanente = self.generate_output_SUMO(coches)
-        output, self.remanente = self.generate_output_Test(coches)
+
+        if self.traffic_simulation_mode == "sumo":
+            output, self.remanente = self.generate_output_SUMO(coches)
+        else:
+            output, self.remanente = self.generate_output_Test(coches)
         
         reward = -np.abs(self.target - output)
         self.num_steps += 1
@@ -201,19 +223,15 @@ class CustomEnv(gym.Env):
         return self.state
 
     def generate_output_SUMO(self, state):
-        intensidad_promedio = 0
         remanente = [0] * 24
 
         fix_state = state * self.Norma
         out = simulacion(int(fix_state), str(self.node_id))
+        remanente = combine_hourly_profiles(out)
 
-        for o in out:
-            lista = o
-            intensidad = lista[0]
-            remanente = [x + y for x, y in zip_longest(remanente, lista[1:-1], fillvalue=0)]
-            intensidad_promedio += intensidad
-
-        output = intensidad_promedio / self.Norma
+        # Keep the PPO interface scalar while aligning it with the 24-hour site profile:
+        # the scalar output is now the daily mean of the simulated detector profile.
+        output = profile_mean(remanente) / self.Norma
 
         self.out = output
 

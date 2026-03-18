@@ -169,3 +169,13 @@ cython_debug/
 #data
 data/
 docs/
+
+# Ignore the .env file that contains environment variables
+.env
+
+# md files
+decisions.md
+design.md
+HandoffPrompt.md
+progress.md
+RunningSummary.md
