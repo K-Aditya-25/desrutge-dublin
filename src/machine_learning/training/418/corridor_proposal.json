@@ -1,0 +1,67 @@
+{
+  "site": {
+    "site_id": "418",
+    "description": "CAPEL ST @ ABBEY ST (LUAS)",
+    "region": "CCITY",
+    "lat": 53.347297,
+    "lon": -6.268342,
+    "x": 6530.885142816813,
+    "y": 3565.9872791087255
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 271,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "1062391649",
+      "detector_edge": "23086918",
+      "sink_edge": "1062391648",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "1062391649",
+        "23086918",
+        "1062391648"
+      ],
+      "route_cost": 146.5,
+      "route_length_m": 146.5,
+      "route_edge_count": 3,
+      "detector_distance_m": 1.6779662330937528,
+      "detector_lane": "23086918_0",
+      "detector_pos": 25.0,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9819070757791881,
+      "simplicity": 1.0,
+      "score": 84.5188603575511
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "1062391649",
+    "detector_edge": "23086918",
+    "sink_edge": "1062391648",
+    "source_hops": 1,
+    "sink_hops": 1,
+    "route_edges": [
+      "1062391649",
+      "23086918",
+      "1062391648"
+    ],
+    "route_cost": 146.5,
+    "route_length_m": 146.5,
+    "route_edge_count": 3,
+    "detector_distance_m": 1.6779662330937528,
+    "detector_lane": "23086918_0",
+    "detector_pos": 25.0,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.9819070757791881,
+    "simplicity": 1.0,
+    "score": 84.5188603575511
+  }
+}

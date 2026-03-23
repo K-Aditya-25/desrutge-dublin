@@ -1,0 +1,117 @@
+{
+  "site": {
+    "site_id": "60",
+    "description": "DORSET ST @ GRANBY ROW & PED AT PARNELL SQ",
+    "region": "NCITY",
+    "lat": 53.35423,
+    "lon": -6.266954,
+    "x": 6593.724764132174,
+    "y": 4340.556788539514
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 645,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "4395627#2",
+      "detector_edge": "4395699#0",
+      "sink_edge": "4395699#1",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "4395627#2",
+        "4395699#0",
+        "4395699#1"
+      ],
+      "route_cost": 91.86,
+      "route_length_m": 91.86,
+      "route_edge_count": 3,
+      "detector_distance_m": 0.26058759613246035,
+      "detector_lane": "4395699#0_0",
+      "detector_pos": 4.5,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9950925429878754,
+      "simplicity": 1.0,
+      "score": 84.89381469530157
+    },
+    {
+      "source_edge": "150800558#2",
+      "detector_edge": "-4396161#2",
+      "sink_edge": "-4396161#1",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "150800558#2",
+        "-4396161#2",
+        "-4396161#1"
+      ],
+      "route_cost": 180.28000000000003,
+      "route_length_m": 180.28,
+      "route_edge_count": 3,
+      "detector_distance_m": 2.7749043228610715,
+      "detector_lane": "-4396161#2_0",
+      "detector_pos": 25.0,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9946794447704195,
+      "simplicity": 1.0,
+      "score": 84.57332863119866
+    },
+    {
+      "source_edge": "4396161#1",
+      "detector_edge": "4396161#2",
+      "sink_edge": "-150800558#2",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "4396161#1",
+        "4396161#2",
+        "-150800558#2"
+      ],
+      "route_cost": 180.28,
+      "route_length_m": 180.28000000000003,
+      "route_edge_count": 3,
+      "detector_distance_m": 2.7749043228610715,
+      "detector_lane": "4396161#2_0",
+      "detector_pos": 25.0,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9946794447704195,
+      "simplicity": 1.0,
+      "score": 84.57332863119866
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "4395627#2",
+    "detector_edge": "4395699#0",
+    "sink_edge": "4395699#1",
+    "source_hops": 1,
+    "sink_hops": 1,
+    "route_edges": [
+      "4395627#2",
+      "4395699#0",
+      "4395699#1"
+    ],
+    "route_cost": 91.86,
+    "route_length_m": 91.86,
+    "route_edge_count": 3,
+    "detector_distance_m": 0.26058759613246035,
+    "detector_lane": "4395699#0_0",
+    "detector_pos": 4.5,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.9950925429878754,
+    "simplicity": 1.0,
+    "score": 84.89381469530157
+  }
+}

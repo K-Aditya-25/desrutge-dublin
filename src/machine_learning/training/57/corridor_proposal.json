@@ -1,0 +1,119 @@
+{
+  "site": {
+    "site_id": "57",
+    "description": "DORSET ST @ ECCLES ST",
+    "region": "NCITY",
+    "lat": 53.357511,
+    "lon": -6.263842,
+    "x": 6786.7992815668695,
+    "y": 4713.378789159469
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 558,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "83806428#2",
+      "detector_edge": "-111286353#7",
+      "sink_edge": "-111286353#6",
+      "source_hops": 2,
+      "sink_hops": 1,
+      "route_edges": [
+        "83806428#2",
+        "123715787",
+        "-111286353#7",
+        "-111286353#6"
+      ],
+      "route_cost": 184.6,
+      "route_length_m": 184.6,
+      "route_edge_count": 4,
+      "detector_distance_m": 3.583133253909553,
+      "detector_lane": "-111286353#7_0",
+      "detector_pos": 25.0,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9617206469304815,
+      "simplicity": 0.8333333333333334,
+      "score": 82.31125138055187
+    },
+    {
+      "source_edge": "111286353#7",
+      "detector_edge": "4385874#0",
+      "sink_edge": "4385874#1",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "111286353#7",
+        "4385874#0",
+        "4385874#1"
+      ],
+      "route_cost": 219.97,
+      "route_length_m": 219.97,
+      "route_edge_count": 3,
+      "detector_distance_m": 3.583133253909553,
+      "detector_lane": "4385874#0_0",
+      "detector_pos": 25.0,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.7878521020084257,
+      "simplicity": 1.0,
+      "score": 81.36988987338769
+    },
+    {
+      "source_edge": "111286353#6",
+      "detector_edge": "111286353#7",
+      "sink_edge": "4385874#0",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "111286353#6",
+        "111286353#7",
+        "4385874#0"
+      ],
+      "route_cost": 120.92,
+      "route_length_m": 120.91999999999999,
+      "route_edge_count": 3,
+      "detector_distance_m": 3.583133253909553,
+      "detector_lane": "111286353#7_0",
+      "detector_pos": 25.0,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.7787665689156852,
+      "simplicity": 1.0,
+      "score": 81.23360687699659
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "83806428#2",
+    "detector_edge": "-111286353#7",
+    "sink_edge": "-111286353#6",
+    "source_hops": 2,
+    "sink_hops": 1,
+    "route_edges": [
+      "83806428#2",
+      "123715787",
+      "-111286353#7",
+      "-111286353#6"
+    ],
+    "route_cost": 184.6,
+    "route_length_m": 184.6,
+    "route_edge_count": 4,
+    "detector_distance_m": 3.583133253909553,
+    "detector_lane": "-111286353#7_0",
+    "detector_pos": 25.0,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.9617206469304815,
+    "simplicity": 0.8333333333333334,
+    "score": 82.31125138055187
+  }
+}

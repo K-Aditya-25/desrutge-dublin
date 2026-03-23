@@ -1,0 +1,67 @@
+{
+  "site": {
+    "site_id": "612",
+    "description": "ABBEY STREET MIDDLE @ LIFFEY ST (LUAS)",
+    "region": "CCITY",
+    "lat": 53.34793766,
+    "lon": -6.263643766,
+    "x": 6840.815282451105,
+    "y": 3649.214787617326
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 213,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "39994843#1",
+      "detector_edge": "14401069#0",
+      "sink_edge": "14401069#1",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "39994843#1",
+        "14401069#0",
+        "14401069#1"
+      ],
+      "route_cost": 27.63,
+      "route_length_m": 27.63,
+      "route_edge_count": 3,
+      "detector_distance_m": 12.479041717205844,
+      "detector_lane": "14401069#0_0",
+      "detector_pos": 8.19,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9744850453628686,
+      "simplicity": 1.0,
+      "score": 83.0573954657923
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "39994843#1",
+    "detector_edge": "14401069#0",
+    "sink_edge": "14401069#1",
+    "source_hops": 1,
+    "sink_hops": 1,
+    "route_edges": [
+      "39994843#1",
+      "14401069#0",
+      "14401069#1"
+    ],
+    "route_cost": 27.63,
+    "route_length_m": 27.63,
+    "route_edge_count": 3,
+    "detector_distance_m": 12.479041717205844,
+    "detector_lane": "14401069#0_0",
+    "detector_pos": 8.19,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.9744850453628686,
+    "simplicity": 1.0,
+    "score": 83.0573954657923
+  }
+}

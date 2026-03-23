@@ -1,0 +1,119 @@
+{
+  "site": {
+    "site_id": "35",
+    "description": "NICHOLAS ST @ CHRISTCHURCH PL",
+    "region": "SCITY",
+    "lat": 53.342866,
+    "lon": -6.271874,
+    "x": 6314.672194290208,
+    "y": 3064.215123197064
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 160,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "143866308#0",
+      "detector_edge": "143866308#1",
+      "sink_edge": "360313821",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "143866308#0",
+        "143866308#1",
+        "360313821"
+      ],
+      "route_cost": 114.22999999999999,
+      "route_length_m": 114.22999999999999,
+      "route_edge_count": 3,
+      "detector_distance_m": 10.212343060620542,
+      "detector_lane": "143866308#1_0",
+      "detector_pos": 4.5,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9656864540726866,
+      "simplicity": 1.0,
+      "score": 83.20875392851273
+    },
+    {
+      "source_edge": "143866298#0",
+      "detector_edge": "143866298#2",
+      "sink_edge": "143866308#0",
+      "source_hops": 2,
+      "sink_hops": 1,
+      "route_edges": [
+        "143866298#0",
+        "143866298#1",
+        "143866298#2",
+        "143866308#0"
+      ],
+      "route_cost": 58.8,
+      "route_length_m": 58.8,
+      "route_edge_count": 4,
+      "detector_distance_m": 5.539102721004489,
+      "detector_lane": "143866298#2_0",
+      "detector_pos": 4.5,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.935619926164796,
+      "simplicity": 0.8333333333333334,
+      "score": 81.6752443856797
+    },
+    {
+      "source_edge": "143866298#2",
+      "detector_edge": "143866308#1",
+      "sink_edge": "360313821",
+      "source_hops": 2,
+      "sink_hops": 1,
+      "route_edges": [
+        "143866298#2",
+        "143866308#0",
+        "143866308#1",
+        "360313821"
+      ],
+      "route_cost": 122.47999999999999,
+      "route_length_m": 122.47999999999999,
+      "route_edge_count": 4,
+      "detector_distance_m": 10.212343060620542,
+      "detector_lane": "143866308#1_0",
+      "detector_pos": 4.5,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9656864540726866,
+      "simplicity": 0.8333333333333334,
+      "score": 81.54208726184606
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "143866308#0",
+    "detector_edge": "143866308#1",
+    "sink_edge": "360313821",
+    "source_hops": 1,
+    "sink_hops": 1,
+    "route_edges": [
+      "143866308#0",
+      "143866308#1",
+      "360313821"
+    ],
+    "route_cost": 114.22999999999999,
+    "route_length_m": 114.22999999999999,
+    "route_edge_count": 3,
+    "detector_distance_m": 10.212343060620542,
+    "detector_lane": "143866308#1_0",
+    "detector_pos": 4.5,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.9656864540726866,
+    "simplicity": 1.0,
+    "score": 83.20875392851273
+  }
+}

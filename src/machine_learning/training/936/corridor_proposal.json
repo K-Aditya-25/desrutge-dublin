@@ -1,0 +1,117 @@
+{
+  "site": {
+    "site_id": "936",
+    "description": "BACHELORS WALK BUS GATE",
+    "region": "CCITY",
+    "lat": 53.347106,
+    "lon": -6.261071,
+    "x": 7015.577054394875,
+    "y": 3563.2925314055756
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 174,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "1064203149#1",
+      "detector_edge": "25094727",
+      "sink_edge": "1008768007",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "1064203149#1",
+        "25094727",
+        "1008768007"
+      ],
+      "route_cost": 92.32,
+      "route_length_m": 92.32,
+      "route_edge_count": 3,
+      "detector_distance_m": 4.237082767454051,
+      "detector_lane": "25094727_0",
+      "detector_pos": 25.0,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9818210466150445,
+      "simplicity": 1.0,
+      "score": 84.19768035329392
+    },
+    {
+      "source_edge": "3790724",
+      "detector_edge": "1064203149#0",
+      "sink_edge": "1064203149#1",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "3790724",
+        "1064203149#0",
+        "1064203149#1"
+      ],
+      "route_cost": 89.50999999999999,
+      "route_length_m": 89.50999999999999,
+      "route_edge_count": 3,
+      "detector_distance_m": 6.675342046660555,
+      "detector_lane": "1064203149#0_0",
+      "detector_pos": 5.71,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9987349063465782,
+      "simplicity": 1.0,
+      "score": 84.1466058393661
+    },
+    {
+      "source_edge": "1330444412",
+      "detector_edge": "3790724",
+      "sink_edge": "1064203149#0",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "1330444412",
+        "3790724",
+        "1064203149#0"
+      ],
+      "route_cost": 142.15,
+      "route_length_m": 142.14999999999998,
+      "route_edge_count": 3,
+      "detector_distance_m": 18.109595715635322,
+      "detector_lane": "3790724_0",
+      "detector_pos": 25.0,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9981812325614925,
+      "simplicity": 1.0,
+      "score": 82.70901902396797
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "1064203149#1",
+    "detector_edge": "25094727",
+    "sink_edge": "1008768007",
+    "source_hops": 1,
+    "sink_hops": 1,
+    "route_edges": [
+      "1064203149#1",
+      "25094727",
+      "1008768007"
+    ],
+    "route_cost": 92.32,
+    "route_length_m": 92.32,
+    "route_edge_count": 3,
+    "detector_distance_m": 4.237082767454051,
+    "detector_lane": "25094727_0",
+    "detector_pos": 25.0,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.9818210466150445,
+    "simplicity": 1.0,
+    "score": 84.19768035329392
+  }
+}

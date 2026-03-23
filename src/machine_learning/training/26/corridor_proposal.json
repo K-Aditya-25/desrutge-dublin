@@ -1,0 +1,118 @@
+{
+  "site": {
+    "site_id": "26",
+    "description": "CAPEL ST BRIDGE",
+    "region": "CCITY",
+    "lat": 53.345694,
+    "lon": -6.267771,
+    "x": 6575.709916128777,
+    "y": 3389.1692059980705
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 254,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "31028273",
+      "detector_edge": "375772040",
+      "sink_edge": "1179644970#0",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "31028273",
+        "375772040",
+        "1179644970#0"
+      ],
+      "route_cost": 65.93,
+      "route_length_m": 65.93,
+      "route_edge_count": 3,
+      "detector_distance_m": 1.144342677171677,
+      "detector_lane": "375772040_0",
+      "detector_pos": 12.615,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9999829182196491,
+      "simplicity": 1.0,
+      "score": 84.85670093864827
+    },
+    {
+      "source_edge": "31028273",
+      "detector_edge": "375772040",
+      "sink_edge": "1179644970#1",
+      "source_hops": 1,
+      "sink_hops": 2,
+      "route_edges": [
+        "31028273",
+        "375772040",
+        "1179644970#0",
+        "1179644970#1"
+      ],
+      "route_cost": 69.13,
+      "route_length_m": 69.13000000000001,
+      "route_edge_count": 4,
+      "detector_distance_m": 1.144342677171677,
+      "detector_lane": "375772040_0",
+      "detector_pos": 12.615,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9999829182196491,
+      "simplicity": 0.8333333333333334,
+      "score": 83.1900342719816
+    },
+    {
+      "source_edge": "375772040",
+      "detector_edge": "1179644970#0",
+      "sink_edge": "1179644970#1",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "375772040",
+        "1179644970#0",
+        "1179644970#1"
+      ],
+      "route_cost": 34.88,
+      "route_length_m": 34.88,
+      "route_edge_count": 3,
+      "detector_distance_m": 24.956442252680628,
+      "detector_lane": "1179644970#0_0",
+      "detector_pos": 4.5,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9949905516916453,
+      "simplicity": 1.0,
+      "score": 81.8053029937896
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "31028273",
+    "detector_edge": "375772040",
+    "sink_edge": "1179644970#0",
+    "source_hops": 1,
+    "sink_hops": 1,
+    "route_edges": [
+      "31028273",
+      "375772040",
+      "1179644970#0"
+    ],
+    "route_cost": 65.93,
+    "route_length_m": 65.93,
+    "route_edge_count": 3,
+    "detector_distance_m": 1.144342677171677,
+    "detector_lane": "375772040_0",
+    "detector_pos": 12.615,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.9999829182196491,
+    "simplicity": 1.0,
+    "score": 84.85670093864827
+  }
+}

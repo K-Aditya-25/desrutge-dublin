@@ -179,7 +179,18 @@ design.md
 HandoffPrompt.md
 progress.md
 RunningSummary.md
+18siteExperiments.md
 
 #separate files
 src/machine_learning/training/*/osm_dublin_bigger.net.xml
 src/machine_learning/training/*/*.net.xml
+
+#zip files
+*.zip
+#uv files
+.uv-cache/
+#Paper pdf
+Bazán-Guillén et al. - 2025 - Realistic Urban Traffic Generator using Decentralized Federated Learning for the SUMO simulator.pdf
+
+#matplotlib files
+.matplotlib/

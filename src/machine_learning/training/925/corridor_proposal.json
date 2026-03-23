@@ -1,0 +1,67 @@
+{
+  "site": {
+    "site_id": "925",
+    "description": "PARNELL ST / DOMINIC ST",
+    "region": "CCITY",
+    "lat": 53.35087364,
+    "lon": -6.264865487,
+    "x": 6746.997610612307,
+    "y": 3972.6139596858993
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 212,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "928725821#2",
+      "detector_edge": "928725821#3",
+      "sink_edge": "1097499207",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "928725821#2",
+        "928725821#3",
+        "1097499207"
+      ],
+      "route_cost": 61.11,
+      "route_length_m": 61.11,
+      "route_edge_count": 3,
+      "detector_distance_m": 0.8528621797231013,
+      "detector_lane": "928725821#3_0",
+      "detector_pos": 15.805,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9989729694923224,
+      "simplicity": 1.0,
+      "score": 84.87798676991945
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "928725821#2",
+    "detector_edge": "928725821#3",
+    "sink_edge": "1097499207",
+    "source_hops": 1,
+    "sink_hops": 1,
+    "route_edges": [
+      "928725821#2",
+      "928725821#3",
+      "1097499207"
+    ],
+    "route_cost": 61.11,
+    "route_length_m": 61.11,
+    "route_edge_count": 3,
+    "detector_distance_m": 0.8528621797231013,
+    "detector_lane": "928725821#3_0",
+    "detector_pos": 15.805,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.9989729694923224,
+    "simplicity": 1.0,
+    "score": 84.87798676991945
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "site": {
+    "site_id": "196",
+    "description": "O'CONNELL BRIDGE @ ASTON QUAY",
+    "region": "CCITY",
+    "lat": 53.3468383,
+    "lon": -6.2589137,
+    "x": 7160.286894361838,
+    "y": 3539.0334455380216
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 42,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "1310928651#0",
+      "detector_edge": "1310928651#2",
+      "sink_edge": "1310928651#3",
+      "source_hops": 2,
+      "sink_hops": 1,
+      "route_edges": [
+        "1310928651#0",
+        "1310928651#1",
+        "1310928651#2",
+        "1310928651#3"
+      ],
+      "route_cost": 94.3,
+      "route_length_m": 94.3,
+      "route_edge_count": 4,
+      "detector_distance_m": 19.477479762650997,
+      "detector_lane": "1310928651#2_0",
+      "detector_pos": 25.0,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9967935937659511,
+      "simplicity": 0.8333333333333334,
+      "score": 80.85055226949122
+    },
+    {
+      "source_edge": "514848250#1",
+      "detector_edge": "375737373#0",
+      "sink_edge": "375737373#1",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "514848250#1",
+        "375737373#0",
+        "375737373#1"
+      ],
+      "route_cost": 74.53,
+      "route_length_m": 74.53,
+      "route_edge_count": 3,
+      "detector_distance_m": 29.429145759286783,
+      "detector_lane": "375737373#0_0",
+      "detector_pos": 7.645,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.965047303451677,
+      "simplicity": 1.0,
+      "score": 80.7970663318643
+    },
+    {
+      "source_edge": "1249270402",
+      "detector_edge": "372838330",
+      "sink_edge": "1313723589#0",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "1249270402",
+        "372838330",
+        "1313723589#0"
+      ],
+      "route_cost": 70.06,
+      "route_length_m": 70.06,
+      "route_edge_count": 3,
+      "detector_distance_m": 35.33957315251464,
+      "detector_lane": "372838330_0",
+      "detector_pos": 16.78,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9853222811992817,
+      "simplicity": 1.0,
+      "score": 80.3623875739249
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "1310928651#0",
+    "detector_edge": "1310928651#2",
+    "sink_edge": "1310928651#3",
+    "source_hops": 2,
+    "sink_hops": 1,
+    "route_edges": [
+      "1310928651#0",
+      "1310928651#1",
+      "1310928651#2",
+      "1310928651#3"
+    ],
+    "route_cost": 94.3,
+    "route_length_m": 94.3,
+    "route_edge_count": 4,
+    "detector_distance_m": 19.477479762650997,
+    "detector_lane": "1310928651#2_0",
+    "detector_pos": 25.0,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.9967935937659511,
+    "simplicity": 0.8333333333333334,
+    "score": 80.85055226949122
+  }
+}

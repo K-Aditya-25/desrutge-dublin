@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-03-19 14:06:18 by Eclipse SUMO sumo Version 1.15.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="./src/machine_learning/training/202/osm_dublin_bigger.net.xml"/>
+        <route-files value="./src/machine_learning/training/202/routes.rou.xml"/>
+        <additional-files value="./src/machine_learning/training/202/detectors.add.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+    </time>
+
+    <processing>
+        <time-to-teleport value="300"/>
+    </processing>
+
+    <report>
+        <no-warnings value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<detector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/det_e1_file.xsd">
+    <interval begin="0.00" end="900.00" id="site_202_a" nVehContrib="227" flow="908.00" occupancy="17.08" speed="7.45" harmonicMeanSpeed="7.38" length="5.00" nVehEntered="227"/>
+    <interval begin="900.00" end="1800.00" id="site_202_a" nVehContrib="206" flow="824.00" occupancy="15.49" speed="7.50" harmonicMeanSpeed="7.39" length="5.00" nVehEntered="206"/>
+    <interval begin="1800.00" end="2700.00" id="site_202_a" nVehContrib="198" flow="792.00" occupancy="15.00" speed="7.45" harmonicMeanSpeed="7.36" length="5.00" nVehEntered="199"/>
+    <interval begin="2700.00" end="3600.00" id="site_202_a" nVehContrib="207" flow="828.00" occupancy="15.59" speed="7.46" harmonicMeanSpeed="7.37" length="5.00" nVehEntered="207"/>
+    <interval begin="3600.00" end="3604.00" id="site_202_a" nVehContrib="2" flow="1800.00" occupancy="26.38" speed="7.68" harmonicMeanSpeed="7.66" length="5.00" nVehEntered="1"/>
+</detector>

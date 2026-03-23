@@ -1,0 +1,118 @@
+{
+  "site": {
+    "site_id": "711",
+    "description": "CAPEL ST @ STRAND ST (LUAS)",
+    "region": "CCITY",
+    "lat": 53.34648366,
+    "lon": -6.268027771,
+    "x": 6555.259518711828,
+    "y": 3476.3346364665776
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 269,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "1478689539#1",
+      "detector_edge": "1478689540",
+      "sink_edge": "1132213866",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "1478689539#1",
+        "1478689540",
+        "1132213866"
+      ],
+      "route_cost": 165.47,
+      "route_length_m": 165.47,
+      "route_edge_count": 3,
+      "detector_distance_m": 0.42561823240347174,
+      "detector_lane": "1478689540_0",
+      "detector_pos": 20.39,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9854929030102098,
+      "simplicity": 1.0,
+      "score": 84.7291912661027
+    },
+    {
+      "source_edge": "1478689540",
+      "detector_edge": "1132213866",
+      "sink_edge": "35078315#0",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "1478689540",
+        "1132213866",
+        "35078315#0"
+      ],
+      "route_cost": 146.63,
+      "route_length_m": 146.63,
+      "route_edge_count": 3,
+      "detector_distance_m": 1.9628690994234974,
+      "detector_lane": "1132213866_0",
+      "detector_pos": 25.0,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.8954745908089243,
+      "simplicity": 1.0,
+      "score": 83.18676022470592
+    },
+    {
+      "source_edge": "1478689539#0",
+      "detector_edge": "1478689540",
+      "sink_edge": "1132213866",
+      "source_hops": 2,
+      "sink_hops": 1,
+      "route_edges": [
+        "1478689539#0",
+        "1478689539#1",
+        "1478689540",
+        "1132213866"
+      ],
+      "route_cost": 185.42,
+      "route_length_m": 185.42000000000002,
+      "route_edge_count": 4,
+      "detector_distance_m": 0.42561823240347174,
+      "detector_lane": "1478689540_0",
+      "detector_pos": 20.39,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.9854929030102098,
+      "simplicity": 0.8333333333333334,
+      "score": 83.06252459943603
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "1478689539#1",
+    "detector_edge": "1478689540",
+    "sink_edge": "1132213866",
+    "source_hops": 1,
+    "sink_hops": 1,
+    "route_edges": [
+      "1478689539#1",
+      "1478689540",
+      "1132213866"
+    ],
+    "route_cost": 165.47,
+    "route_length_m": 165.47,
+    "route_edge_count": 3,
+    "detector_distance_m": 0.42561823240347174,
+    "detector_lane": "1478689540_0",
+    "detector_pos": 20.39,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.9854929030102098,
+    "simplicity": 1.0,
+    "score": 84.7291912661027
+  }
+}

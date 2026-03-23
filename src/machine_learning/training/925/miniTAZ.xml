@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Auto-proposed corridor for site 925; source=928725821#2; detector=928725821#3; sink=1097499207. -->
+    <taz id="taz" color="blue">
+        <tazSource id="928725821#2" weight="1.00"/>
+        <tazSink id="1097499207" weight="1.00"/>
+    </taz>
+</additional>

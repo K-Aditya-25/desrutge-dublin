@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Auto-proposed detector corridor for site 612; score=83.06; site_distance_m=12.48. -->
+    <inductionLoop id="site_612_a" lane="14401069#0_0" pos="8.19" period="900.00" file="AM_612_a.xml" friendlyPos="1"/>
+</additional>

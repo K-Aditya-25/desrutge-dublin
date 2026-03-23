@@ -1,0 +1,119 @@
+{
+  "site": {
+    "site_id": "202",
+    "description": "PARNELL ST @ PARNELL SQ & PED AT DOMINICK ST",
+    "region": "CCITY",
+    "lat": 53.35182721,
+    "lon": -6.262915529,
+    "x": 6872.686511052423,
+    "y": 4083.637506810017
+  },
+  "net_file": "/home/adityakharbanda/desrutge-dublin/src/machine_learning/training/95/osm_dublin_bigger.net.xml",
+  "candidate_count": 172,
+  "manual_review_threshold": 60.0,
+  "top_candidates": [
+    {
+      "source_edge": "1390518836#1",
+      "detector_edge": "1170418365",
+      "sink_edge": "1390518837",
+      "source_hops": 1,
+      "sink_hops": 1,
+      "route_edges": [
+        "1390518836#1",
+        "1170418365",
+        "1390518837"
+      ],
+      "route_cost": 28.29,
+      "route_length_m": 28.29,
+      "route_edge_count": 3,
+      "detector_distance_m": 3.460438349867839,
+      "detector_lane": "1170418365_0",
+      "detector_pos": 10.395,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.970796834725643,
+      "simplicity": 1.0,
+      "score": 84.12939772715117
+    },
+    {
+      "source_edge": "1390518836#0",
+      "detector_edge": "1170418365",
+      "sink_edge": "1390518837",
+      "source_hops": 2,
+      "sink_hops": 1,
+      "route_edges": [
+        "1390518836#0",
+        "1390518836#1",
+        "1170418365",
+        "1390518837"
+      ],
+      "route_cost": 30.74,
+      "route_length_m": 30.740000000000002,
+      "route_edge_count": 4,
+      "detector_distance_m": 3.460438349867839,
+      "detector_lane": "1170418365_0",
+      "detector_pos": 10.395,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.970796834725643,
+      "simplicity": 0.8333333333333334,
+      "score": 82.4627310604845
+    },
+    {
+      "source_edge": "1390518836#1",
+      "detector_edge": "1170418365",
+      "sink_edge": "1170418363#0",
+      "source_hops": 1,
+      "sink_hops": 2,
+      "route_edges": [
+        "1390518836#1",
+        "1170418365",
+        "1390518837",
+        "1170418363#0"
+      ],
+      "route_cost": 31.1,
+      "route_length_m": 31.099999999999998,
+      "route_edge_count": 4,
+      "detector_distance_m": 3.460438349867839,
+      "detector_lane": "1170418365_0",
+      "detector_pos": 10.395,
+      "detector_name": "",
+      "source_name": "",
+      "sink_name": "",
+      "street_continuity": 0.0,
+      "heading_continuity": 0.970796834725643,
+      "simplicity": 0.8333333333333334,
+      "score": 82.4627310604845
+    }
+  ],
+  "status": "candidate_selected",
+  "selected_candidate": {
+    "source_edge": "1390518836#1",
+    "detector_edge": "1170418365",
+    "sink_edge": "1390518837",
+    "source_hops": 1,
+    "sink_hops": 1,
+    "route_edges": [
+      "1390518836#1",
+      "1170418365",
+      "1390518837"
+    ],
+    "route_cost": 28.29,
+    "route_length_m": 28.29,
+    "route_edge_count": 3,
+    "detector_distance_m": 3.460438349867839,
+    "detector_lane": "1170418365_0",
+    "detector_pos": 10.395,
+    "detector_name": "",
+    "source_name": "",
+    "sink_name": "",
+    "street_continuity": 0.0,
+    "heading_continuity": 0.970796834725643,
+    "simplicity": 1.0,
+    "score": 84.12939772715117
+  }
+}
