@@ -5,8 +5,8 @@ from stable_baselines3 import PPO
 
 import time
 
-import gym
-from gym import spaces
+import gymnasium as gym
+from gymnasium import spaces
 
 import random
 import numpy as np
@@ -19,6 +19,9 @@ from .sumo_site_metrics import combine_hourly_profiles, profile_mean
 Norma = 10000
 DEFAULT_TRAFFIC_SIMULATION_MODE = "sumo"
 SUPPORTED_TRAFFIC_SIMULATION_MODES = {"sumo", "test"}
+DEFAULT_TRAFFIC_TOTAL_TIMESTEPS = 100
+DEFAULT_TRAFFIC_EPISODE_MAX_STEPS = 10
+DEFAULT_TRAFFIC_TEST_EPISODES = 10
 
 
 def resolve_traffic_simulation_mode(conf):
@@ -29,6 +32,13 @@ def resolve_traffic_simulation_mode(conf):
             f"{mode!r}. Expected one of {sorted(SUPPORTED_TRAFFIC_SIMULATION_MODES)}."
         )
     return mode
+
+
+def resolve_test_targets(testloader, num_episodes):
+    if num_episodes <= 1:
+        return np.array([float(np.mean(testloader))], dtype=np.float32) / Norma
+
+    return np.linspace(min(testloader), max(testloader), num_episodes, dtype=np.float32) / Norma
 
 # #############################################################################
 # General ML Pipeline: Model Training, and Testing
@@ -48,7 +58,14 @@ class Traffic_Generation_Algorithms:
             Norma,
             conf["node_id"],
             resolve_traffic_simulation_mode(conf),
+            int(conf.get("traffic_episode_max_steps", DEFAULT_TRAFFIC_EPISODE_MAX_STEPS)),
         )
+
+    def _resolve_ppo_rollout_config(self, conf):
+        total_timesteps = max(1, int(conf.get("traffic_total_timesteps", DEFAULT_TRAFFIC_TOTAL_TIMESTEPS)))
+        rollout_steps = min(64, max(2, total_timesteps))
+        batch_size = rollout_steps
+        return total_timesteps, rollout_steps, batch_size
     
     def get_params(self):
         model_params = [val.cpu().numpy() for _, val in self.model.policy.state_dict().items()]
@@ -71,6 +88,7 @@ class Traffic_Generation_Algorithms:
 
     def train_model(self, trainloader, conf):
         """Train the ML algorithm on the training set."""
+        steps, rollout_steps, batch_size = self._resolve_ppo_rollout_config(conf)
         if self.model == None:
 
             target = np.mean(trainloader) / Norma
@@ -79,8 +97,8 @@ class Traffic_Generation_Algorithms:
         
             self.model = PPO('MlpPolicy', env,
                     learning_rate=0.0003,
-                    n_steps=64,
-                    batch_size=64,
+                    n_steps=rollout_steps,
+                    batch_size=batch_size,
                     n_epochs=4,
                     gamma=0.95,
                     gae_lambda=0.95,
@@ -89,8 +107,7 @@ class Traffic_Generation_Algorithms:
                     vf_coef=0.5,
                     max_grad_norm=0.5,
                     verbose=1)
-        
-        steps = 100
+
         self.model.learn(total_timesteps=steps)
         return
         
@@ -98,9 +115,9 @@ class Traffic_Generation_Algorithms:
         """Validate the ML algorithm on the entire test set."""
         rewards = []
         out = []
-        num_episodes = 10
+        num_episodes = max(1, int(conf.get("traffic_test_episodes", DEFAULT_TRAFFIC_TEST_EPISODES)))
 
-        target = np.linspace(min(testloader), max(testloader), num_episodes ) / Norma
+        target = resolve_test_targets(testloader, num_episodes)
 
         error = 0
         e = 0
@@ -110,13 +127,14 @@ class Traffic_Generation_Algorithms:
 
             env = self._build_env(target[i], conf)
 
-            obs = env.reset()
+            obs, _ = env.reset()
             done = False
             
             while not done:
                 # El modelo predice la acción a tomar
                 action, _ = self.model.predict(obs, deterministic=True)
-                obs, reward, done, _ = env.step(action)
+                obs, reward, terminated, truncated, _ = env.step(action)
+                done = terminated or truncated
             
                 # Agregar la recompensa total de este episodio a la lista
                 if isinstance(reward, float):
@@ -151,12 +169,13 @@ class Traffic_Generation_Algorithms:
     def init_model(self, trainloader, conf):
         """Init the ML algorithm on the training set."""
         if self.model == None:
+            _, rollout_steps, batch_size = self._resolve_ppo_rollout_config(conf)
             target = np.mean(trainloader) / Norma
             env = self._build_env(target, conf)
             self.model = PPO('MlpPolicy', env,
                     learning_rate=0.0003,
-                    n_steps=64,
-                    batch_size=64,
+                    n_steps=rollout_steps,
+                    batch_size=batch_size,
                     n_epochs=4,
                     gamma=0.95,
                     gae_lambda=0.95,
@@ -169,7 +188,14 @@ class Traffic_Generation_Algorithms:
 
 
 class CustomEnv(gym.Env):
-    def __init__(self, target, Norma, node_id, traffic_simulation_mode=DEFAULT_TRAFFIC_SIMULATION_MODE):
+    def __init__(
+        self,
+        target,
+        Norma,
+        node_id,
+        traffic_simulation_mode=DEFAULT_TRAFFIC_SIMULATION_MODE,
+        max_steps=DEFAULT_TRAFFIC_EPISODE_MAX_STEPS,
+    ):
         super(CustomEnv, self).__init__()
         self.target = target
         self.observation_space = spaces.Box(low=0, high=3, shape=(1,), dtype=np.float32)
@@ -184,6 +210,7 @@ class CustomEnv(gym.Env):
         self.Norma = Norma
         self.node_id = node_id
         self.traffic_simulation_mode = traffic_simulation_mode
+        self.max_steps_limit = int(max_steps)
 
     def step(self, action):
         multiplicador = action[0]
@@ -200,32 +227,37 @@ class CustomEnv(gym.Env):
         reward = -np.abs(self.target - output)
         self.num_steps += 1
 
-        done = False
+        terminated = False
+        truncated = False
 
         umbral = 0.001
 
         if abs(self.target - output) < umbral:
             reward += 10
-            done = True
+            terminated = True
         
         if self.num_steps >= self.max_steps:
             reward -= 0.5
-            done = True
+            truncated = True
 
-        return self.state, reward, done, {}
+        return self.state, reward, terminated, truncated, {}
 
-    def reset(self):
+    def reset(self, *, seed=None, options=None):
+        super().reset(seed=seed)
         self.state = np.array([1.0])
         self.num_steps = 0
-        self.max_steps = 10
+        self.max_steps = self.max_steps_limit
 
         print("Reset:", self.state)
-        return self.state
+        return self.state, {}
 
     def generate_output_SUMO(self, state):
         remanente = [0] * 24
 
         fix_state = state * self.Norma
+        if int(fix_state) <= 0:
+            self.out = 0.0
+            return 0.0, remanente
         out = simulacion(int(fix_state), str(self.node_id))
         remanente = combine_hourly_profiles(out)
 

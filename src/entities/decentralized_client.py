@@ -51,13 +51,17 @@ class DecentralizeClient(DistributedNode):
         # Start listener threads for each node
         self.start_listener()
         for round_num in range(self.rounds):
+            round_started = time.perf_counter()
             # Training phase
             log_info_node(self.node_id, f"Round {round_num}. Starting training process...")
             self.train_local_model()
 
             # Wait for all nodes to finish the training phase
             log_info_node(self.node_id, f"Training finished. Waiting for other nodes to complete training...")
+            barrier_started = time.perf_counter()
             self.barrier_sim.wait()  # Simulated synchronize with other nodes
+            barrier_elapsed = time.perf_counter() - barrier_started
+            log_info_node(self.node_id, f"Barrier wait completed in {barrier_elapsed:.2f}s")
 
             # Send the model to neighbors
             log_info_node(self.node_id, f"Sending model to neighbors...")
@@ -72,6 +76,7 @@ class DecentralizeClient(DistributedNode):
 
             # Simulate sharing time interval
             # With this simulated time sharing, model sharing must be reciprocal
+            receive_started = time.perf_counter()
             wait = 2
             while True:
                 if wait == 0:
@@ -84,6 +89,8 @@ class DecentralizeClient(DistributedNode):
             # Get all received models in this round
             received_updates = self.get_all_updates_from_queue()
             num_received_models = len(received_updates)
+            receive_elapsed = time.perf_counter() - receive_started
+            log_info_node(self.node_id, f"Model exchange wait completed in {receive_elapsed:.2f}s")
             log_info_node(self.node_id, f"Aggregating models ({self.aggregation_alg})... Received {num_received_models} models.")
             # Aggregate the received models into the local model
             aggregated_model = self.aggregation_models(received_updates, round_num)
@@ -100,6 +107,9 @@ class DecentralizeClient(DistributedNode):
                     
                 model = self.local_model_history[-1]
                 log_info(f"local model: {model}")
+
+            round_elapsed = time.perf_counter() - round_started
+            log_info_node(self.node_id, f"Round {round_num} completed in {round_elapsed:.2f}s")
 
         log_info_node(self.node_id, f"Training complete!")
 

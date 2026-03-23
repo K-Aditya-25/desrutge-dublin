@@ -28,6 +28,7 @@ def main(args, nodes_config):
         "byz_attack": args.attack,
         "algorithm_config": {},
         "attack_config": {},
+        "save_node_models": args.saveNodeModels,
         "gossip_share": False,
         "conf_nodes": {
             # "num_classes": 10,
@@ -35,6 +36,9 @@ def main(args, nodes_config):
             "DEVICE": None,
             "show_progress": False,
             "traffic_simulation_mode": args.trafficSimulationMode,
+            "traffic_total_timesteps": args.trafficTotalTimesteps,
+            "traffic_episode_max_steps": args.trafficEpisodeMaxSteps,
+            "traffic_test_episodes": args.trafficTestEpisodes,
             "show_results_round": [1003]
         }
     }
@@ -74,7 +78,8 @@ def main(args, nodes_config):
             trainset, testset, num_partitions=len(nodes_config), batch_size_client=32, batch_size_test=128, val_ratio=0.1
         )
     elif sim_config["dataset"] == "Traffic_Generator":
-        trainloaders, valloaders, testloader = prepare_dataset_Traffic(dataset)
+        required_site_ids = list(nodes_config.keys())
+        trainloaders, valloaders = prepare_dataset_Traffic(dataset, required_site_ids=required_site_ids)
     
     model_class = MODEL_CLASSES.get(sim_config["dataset"])
     
@@ -90,6 +95,7 @@ def main(args, nodes_config):
     file_name = args.output
     # Create directory if it doesn't exist
     os.makedirs(os.path.dirname(file_name), exist_ok=True)
+    log_info(f"Writing decentralized simulation results to {file_name}")
     with open( file_name,  "w" ) as f:
         json.dump(simulation_results, f, indent=2)
 
@@ -121,6 +127,32 @@ if __name__ == "__main__":
         required=False,
         choices=["sumo", "test"],
         default="sumo",
+    )
+    parser.add_argument(
+        "--trafficTotalTimesteps",
+        type=int,
+        help="Per-node PPO timesteps for Traffic_Generator training.",
+        required=False,
+        default=100,
+    )
+    parser.add_argument(
+        "--trafficEpisodeMaxSteps",
+        type=int,
+        help="Max environment steps per Traffic_Generator episode.",
+        required=False,
+        default=10,
+    )
+    parser.add_argument(
+        "--trafficTestEpisodes",
+        type=int,
+        help="Number of Traffic_Generator evaluation episodes per node after each round.",
+        required=False,
+        default=10,
+    )
+    parser.add_argument(
+        "--saveNodeModels",
+        action="store_true",
+        help="Export per-node trained models after the simulation completes.",
     )
     parser.add_argument("-p1", "--paramsAtk", type=float, nargs='+', help="Parameters for attack config", required=False, default=[])
     parser.add_argument("-p2", "--paramsAgg", type=float, nargs='+', help="Parameters for aggregation config", required=False, default=[])

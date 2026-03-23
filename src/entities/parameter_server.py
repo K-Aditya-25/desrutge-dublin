@@ -49,6 +49,7 @@ class ParameterServer(DistributedNode):
         # Start listener threads for each node
         self.start_listener()
         for round_num in range(self.rounds):
+            round_started = time.perf_counter()
             # Training phase
             log_info_node(self.node_id, f"Round {round_num}. Waiting for model updates from clients...")
             
@@ -56,10 +57,13 @@ class ParameterServer(DistributedNode):
                 self.model.init_model(self.testloader, self.conf_nodes)
             
             # Simulate sharing time interval
+            receive_started = time.perf_counter()
             while True:
                 time.sleep(5)
                 if self.get_num_updates_queue() == len(self.neighbors):
                     break
+            receive_elapsed = time.perf_counter() - receive_started
+            log_info_node(self.node_id, f"Client-update wait completed in {receive_elapsed:.2f}s")
             
             # Get all received models in this round
             received_updates = self.get_all_updates_from_queue()
@@ -85,6 +89,8 @@ class ParameterServer(DistributedNode):
                 
             model = self.local_model_history[-1]
             log_info(f"Local model: {model}")
+            round_elapsed = time.perf_counter() - round_started
+            log_info_node(self.node_id, f"Round {round_num} completed in {round_elapsed:.2f}s")
 
         log_info_node(self.node_id, f"Training complete!")
 

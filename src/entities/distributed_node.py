@@ -3,6 +3,7 @@ import socket
 import threading
 import pickle
 import numpy as np
+import time
 from datetime import datetime
 from queue import Queue
 
@@ -42,7 +43,10 @@ class DistributedNode:
     # Function to train the local model for one round
     def train_local_model(self):
         print("Config Node ID:", self.conf_nodes)
+        started = time.perf_counter()
         self.model.train_model(self.trainloader, self.conf_nodes)
+        elapsed = time.perf_counter() - started
+        log_info_node(self.node_id, f"Local training phase completed in {elapsed:.2f}s")
         return 
     
     # Function to evaluate the local model
@@ -120,7 +124,9 @@ class DistributedNode:
     ##################################
 
     def save_statistics(self):
+        started = time.perf_counter()
         results = self.evaluate_local_model()
+        elapsed = time.perf_counter() - started
         
         for metric in results.keys():
             if metric not in self.statistics:
@@ -130,4 +136,5 @@ class DistributedNode:
             self.statistics[key].append(value)
             
         self.local_model_history.append(self.get_parameters())
+        log_info_node(self.node_id, f"Local evaluation phase completed in {elapsed:.2f}s")
         return

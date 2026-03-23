@@ -69,25 +69,43 @@ def load_Traffic_Generator(file_path: str = "./data/TrafficGeneration/"):
     return dataset
 
 
-def prepare_dataset_Traffic(dataset):
+def _normalize_site_id(value) -> str:
+    try:
+        numeric_value = float(value)
+        if numeric_value.is_integer():
+            return str(int(numeric_value))
+    except (TypeError, ValueError):
+        pass
+    return str(value)
+
+
+def prepare_dataset_Traffic(dataset, required_site_ids=None):
+    """Prepare traffic profiles keyed by site_id instead of position.
+
+    The decentralized and centralized topology JSONs already identify nodes by
+    site id, so the traffic dataset must be bound by that same key instead of
+    by the accidental CSV sort order.
     """
-    """
-    testset = dataset[-1][1:]
-    trainset = dataset[:-1]
-    print(f"Trainset: {len(trainset)} samples, Testset: {len([testset])} samples.")
-    
     subsets = {}
-    for set in trainset:
-        id = set[0]
-        data = set[1:]
-        subsets[id] = data
-    
-    ordered_subsets = {k: subsets[k] for k in sorted(subsets.keys())}
-    print()
-    trainloaders = []
-    valloaders = []
-    for key in ordered_subsets.keys():
-        trainloaders.append(subsets[key])
-        valloaders.append(subsets[key])
-    
-    return trainloaders, valloaders, testset
+    for sample in dataset:
+        site_id = _normalize_site_id(sample[0])
+        subsets[site_id] = [float(value) for value in sample[1:]]
+
+    if required_site_ids is None:
+        selected_site_ids = sorted(subsets.keys(), key=lambda value: int(value))
+    else:
+        selected_site_ids = [_normalize_site_id(site_id) for site_id in required_site_ids]
+        missing = [site_id for site_id in selected_site_ids if site_id not in subsets]
+        if missing:
+            raise ValueError(
+                "Traffic_Generator is missing required site profiles for topology nodes: "
+                f"{missing}"
+            )
+
+    selected_profiles = {site_id: subsets[site_id] for site_id in selected_site_ids}
+    print(f"Prepared {len(selected_profiles)} traffic site profiles.")
+
+    trainloaders = {site_id: profile[:] for site_id, profile in selected_profiles.items()}
+    valloaders = {site_id: profile[:] for site_id, profile in selected_profiles.items()}
+
+    return trainloaders, valloaders

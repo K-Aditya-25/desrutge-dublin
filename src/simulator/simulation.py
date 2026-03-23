@@ -1,5 +1,9 @@
 import threading
 import multiprocessing
+import time
+from pathlib import Path
+
+import torch
 
 from entities.centralized_client import CentralizeClient
 from entities.decentralized_client import DecentralizeClient
@@ -10,6 +14,64 @@ from utils.utils_logs import *
 from machine_learning.metrics.utils import R_squared_models
 
 from typing import Dict, Any, List, Union
+
+
+def resolve_node_loader(loaders, node_key, index):
+    if isinstance(loaders, dict):
+        return loaders[str(node_key)]
+    return loaders[index]
+
+
+def snapshot_shared_mapping(shared_mapping):
+    return {str(key): value for key, value in shared_mapping.items()}
+
+
+def build_export_ready_model(model_class, sim_config, node_key, trainloader):
+    config_aux = sim_config["conf_nodes"].copy()
+    config_aux["node_id"] = str(node_key)
+    model_aux = model_class(config_aux)
+    if hasattr(model_aux, "init_model"):
+        model_aux.init_model(trainloader, config_aux)
+    return model_aux
+
+
+def save_model_artifact(model_aux, node_key):
+    if hasattr(model_aux, "model") and model_aux.model is not None and hasattr(model_aux.model, "save"):
+        output_path = Path(f"./ppo_simulador_prueba_{node_key}.zip")
+        model_aux.model.save(str(output_path))
+        return str(output_path)
+
+    if hasattr(model_aux, "state_dict"):
+        output_path = Path(f"./model_simulador_prueba_{node_key}.pt")
+        torch.save(model_aux.state_dict(), output_path)
+        return str(output_path)
+
+    raise RuntimeError(f"Unable to save model artifact for node {node_key}.")
+
+
+def export_node_models(shared_models, ordered_node_keys, model_class, trainloaders, sim_config):
+    if not shared_models:
+        log_warning("Node-model export was requested, but no shared model history was collected.")
+        return
+
+    export_started = time.perf_counter()
+    log_info("Exporting node models from the final in-memory parameters...")
+
+    for index, node_key in enumerate(ordered_node_keys):
+        node_statistics = shared_models.get(str(node_key))
+        if not node_statistics:
+            log_warning(f"Skipping node-model export for node {node_key}: no model history found.")
+            continue
+
+        last_model = node_statistics[-1]
+        trainloader = resolve_node_loader(trainloaders, node_key, index)
+        model_aux = build_export_ready_model(model_class, sim_config, node_key, trainloader)
+        model_aux.set_params(last_model)
+        output_path = save_model_artifact(model_aux, node_key)
+        log_info(f"Saved node model for {node_key} to {output_path}")
+
+    export_elapsed = time.perf_counter() - export_started
+    log_info(f"Node-model export completed in {export_elapsed:.2f}s")
 
 def decentralized_simulation(
     sim_config: Dict[str, Any], 
@@ -32,12 +94,15 @@ def decentralized_simulation(
     Returns:
         simulation_results: Results of the simulation, which may include performance metrics, statistics, etc.
     """
+    simulation_started = time.perf_counter()
     nodes = {}
     
     barrier_sim = ProcessBarrier(len(nodes_config))             # Synchronization barrier for nodes
     # barrier_sim = threading.Barrier(len(nodes_config))      
 
     for index, (key, value) in enumerate(nodes_config.items()):
+        trainloader = resolve_node_loader(trainloaders, key, index)
+        valloader = resolve_node_loader(valloaders, key, index)
 
         if value['id'] in sim_config["malicious_nodes"]:
             # Create instances of MaliciousDecentralizeNode
@@ -48,8 +113,8 @@ def decentralized_simulation(
                 neighbors= [nodes_config[str(i)] for i in value['neighbors']], 
                 dataset=sim_config["dataset"],
                 model=model_class(sim_config["conf_nodes"]),
-                trainloader=trainloaders[index],
-                testloader=valloaders[index],
+                trainloader=trainloader,
+                testloader=valloader,
                 rounds=sim_config["rounds"],
                 aggregation_alg=sim_config["algorithm"],
                 aggregation_config=sim_config.get("algorithm_config", None),
@@ -68,8 +133,8 @@ def decentralized_simulation(
                 neighbors= [nodes_config[str(i)] for i in value['neighbors']], 
                 dataset=sim_config["dataset"],
                 model=model_class(sim_config["conf_nodes"]),
-                trainloader=trainloaders[index],
-                testloader=valloaders[index],
+                trainloader=trainloader,
+                testloader=valloader,
                 rounds=sim_config["rounds"],
                 aggregation_alg=sim_config["algorithm"],
                 aggregation_config=sim_config.get("algorithm_config", None),
@@ -99,29 +164,34 @@ def decentralized_simulation(
         task.join()
         print("Task joined")
 
-    evaluate_metrics = shared_results[next(iter(shared_results))].keys()
+    shared_results_local = snapshot_shared_mapping(shared_results)
+    shared_models_local = snapshot_shared_mapping(shared_models)
+    ordered_node_keys = list(nodes.keys())
+
+    if not shared_results_local:
+        raise RuntimeError("Decentralized simulation finished without collecting any node statistics.")
+
+    evaluate_metrics = shared_results_local[next(iter(shared_results_local))].keys()
     simulation_results = {metric: {} for metric in evaluate_metrics}
     simulation_results["R-Squared"] = []
     
-    for key, node_statistics in shared_results.items():
+    for key in ordered_node_keys:
+        node_statistics = shared_results_local[str(key)]
         for metric in evaluate_metrics:
             simulation_results[metric][key] = node_statistics[metric] 
     
     for round in range(int(sim_config["rounds"])):
         models_round = []
-        for key, node_statistics in shared_models.items():
+        for key in ordered_node_keys:
+            node_statistics = shared_models_local[str(key)]
             models_round.append(node_statistics[round])
         simulation_results["R-Squared"].append(R_squared_models(models_round))
-    
-    # Save models - not very efficient, but non shared memory of multiprocessing is not easy to handle
-    for key, node_statistics in shared_models.items():
-        last_model = node_statistics[-1]
-        config_aux = sim_config["conf_nodes"].copy()
-        config_aux["node_id"] = key
-        model_aux = model_class(config_aux)
-        model_aux.train_model(trainloaders[0], config_aux)
-        model_aux.set_params(last_model)
-        model_aux.model.save("./ppo_simulador_prueba_" + str(key) + ".zip")
+
+    simulation_elapsed = time.perf_counter() - simulation_started
+    log_info(f"Decentralized worker processes completed in {simulation_elapsed:.2f}s")
+
+    if sim_config.get("save_node_models", False):
+        export_node_models(shared_models_local, ordered_node_keys, model_class, trainloaders, sim_config)
     
     return simulation_results
 
@@ -148,6 +218,7 @@ def centralized_simulation(
     Returns:
         simulation_results: Results of the simulation, which may include performance metrics, statistics, etc.
     """
+    simulation_started = time.perf_counter()
 
     nodes = {}
     server_conf = nodes_config[sim_config["server_id"]]
@@ -170,6 +241,8 @@ def centralized_simulation(
     barrier_sim = ProcessBarrier(len(clients_config))      # Synchronization barrier for nodes
     
     for index, (key, value) in enumerate(clients_config.items()):
+        trainloader = resolve_node_loader(trainloaders, key, index)
+        valloader = resolve_node_loader(valloaders, key, index)
         if value['id'] in sim_config["malicious_nodes"]:
             # Create instances of MaliciousCentralizedNode
             nodes[key] = MaliciousCentralizeClient(
@@ -180,8 +253,8 @@ def centralized_simulation(
                 server_id=sim_config["server_id"],
                 dataset=sim_config["dataset"],
                 model=model_class(sim_config["conf_nodes"]),
-                trainloader=trainloaders[index],
-                testloader=valloaders[index],
+                trainloader=trainloader,
+                testloader=valloader,
                 rounds=sim_config["rounds"],
                 conf_nodes=sim_config["conf_nodes"],
                 barrier_sim=barrier_sim,
@@ -198,8 +271,8 @@ def centralized_simulation(
                 server_id=sim_config["server_id"], 
                 dataset=sim_config["dataset"],
                 model=model_class(sim_config["conf_nodes"]),
-                trainloader=trainloaders[index],
-                testloader=valloaders[index],
+                trainloader=trainloader,
+                testloader=valloader,
                 rounds=sim_config["rounds"],
                 conf_nodes=sim_config["conf_nodes"],
                 barrier_sim=barrier_sim
@@ -223,24 +296,27 @@ def centralized_simulation(
     for task in tasks:
         task.join()
         print("Task joined")
-    
-    evaluate_metrics = shared_results[next(iter(shared_results))].keys()
+
+    shared_results_local = snapshot_shared_mapping(shared_results)
+    shared_models_local = snapshot_shared_mapping(shared_models)
+    ordered_node_keys = list(nodes.keys())
+
+    if not shared_results_local:
+        raise RuntimeError("Centralized simulation finished without collecting any node statistics.")
+
+    evaluate_metrics = shared_results_local[next(iter(shared_results_local))].keys()
     simulation_results = {metric: {} for metric in evaluate_metrics}
     
-    for key, node_statistics in shared_results.items():
+    for key, node_statistics in shared_results_local.items():
         if str(key) == sim_config["server_id"]:
             for metric in evaluate_metrics:
                 simulation_results[metric][key] = node_statistics[metric]
-    
-    # Save models - not very efficient, but non shared memory of multiprocessing is not easy to handle
-    # for key, node_statistics in shared_models.items():
-    #     last_model = node_statistics[-1]
-    #     config_aux = sim_config["conf_nodes"].copy()
-    #     config_aux["node_id"] = key
-    #     model_aux = model_class(config_aux)
-    #     model_aux.train_model(trainloaders[0], config_aux)
-    #     model_aux.set_params(last_model)
-    #     model_aux.model.save("./ppo_simulador_prueba_" + str(key) + ".zip")
+
+    simulation_elapsed = time.perf_counter() - simulation_started
+    log_info(f"Centralized worker processes completed in {simulation_elapsed:.2f}s")
+
+    if sim_config.get("save_node_models", False):
+        export_node_models(shared_models_local, ordered_node_keys, model_class, trainloaders, sim_config)
     
     return simulation_results
     

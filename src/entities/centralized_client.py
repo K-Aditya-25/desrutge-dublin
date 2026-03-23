@@ -26,13 +26,17 @@ class CentralizeClient(DistributedNode):
         # Start listener threads for each node
         self.start_listener()
         for round_num in range(self.rounds):
+            round_started = time.perf_counter()
             # Training phase
             log_info_node(self.node_id, f"Round {round_num}. Starting training process...")
             self.train_local_model()
 
             # Wait for all client to finish the training phase
             log_info_node(self.node_id, f"Training finished. Waiting for other clients to complete training...")
+            barrier_started = time.perf_counter()
             self.barrier_sim.wait()  # Simulated synchronize with other nodes
+            barrier_elapsed = time.perf_counter() - barrier_started
+            log_info_node(self.node_id, f"Barrier wait completed in {barrier_elapsed:.2f}s")
 
             # Send the model to neighbors
             log_info_node(self.node_id, f"Sending model to neighbors...")
@@ -41,6 +45,7 @@ class CentralizeClient(DistributedNode):
 
             # Receiving the global model from server
             received_server_model = False
+            receive_started = time.perf_counter()
             while True:
                 time.sleep(5)
                 if self.get_num_updates_queue() != 0:
@@ -54,8 +59,12 @@ class CentralizeClient(DistributedNode):
                             break   
                 if received_server_model:
                     break
+            receive_elapsed = time.perf_counter() - receive_started
+            log_info_node(self.node_id, f"Global-model wait completed in {receive_elapsed:.2f}s")
             
             # Save the model stats (optional)
             self.save_statistics()
+            round_elapsed = time.perf_counter() - round_started
+            log_info_node(self.node_id, f"Round {round_num} completed in {round_elapsed:.2f}s")
 
         log_info_node(self.node_id, f"Training complete!")
