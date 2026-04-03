@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-03-19 14:05:55 by Eclipse SUMO duarouter Version 1.15.0
+<!-- generated on 2026-03-25 20:53:27 by Eclipse SUMO duarouter Version 1.15.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
 
     <input>
@@ -35,25 +35,16 @@
     <vehicle id="9" depart="18.39" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="142" depart="39.03" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="5" depart="55.65" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="111" depart="81.63" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="129" depart="116.59" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="19" depart="163.02" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="92" depart="169.75" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="137" depart="179.52" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="73" depart="186.01" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
@@ -63,9 +54,6 @@
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="68" depart="212.57" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="147" depart="214.16" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="27" depart="238.38" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
@@ -119,9 +107,6 @@
     <vehicle id="61" depart="587.91" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="143" depart="592.10" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="77" depart="617.57" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
@@ -143,13 +128,7 @@
     <vehicle id="3" depart="754.69" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="150" depart="759.36" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="14" depart="764.28" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="128" depart="767.89" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="60" depart="782.98" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
@@ -170,9 +149,6 @@
     <vehicle id="16" depart="869.60" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="134" depart="873.05" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="12" depart="912.02" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
@@ -183,12 +159,6 @@
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="29" depart="972.03" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="145" depart="1010.30" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="140" depart="1025.76" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="54" depart="1034.54" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
@@ -233,19 +203,7 @@
     <vehicle id="78" depart="1336.43" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="131" depart="1364.10" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="122" depart="1407.79" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="136" depart="1469.82" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="8" depart="1580.77" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="146" depart="1620.66" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="106" depart="1631.96" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
@@ -266,9 +224,6 @@
     <vehicle id="32" depart="1763.21" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="144" depart="1780.20" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="6" depart="1817.33" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
@@ -281,13 +236,7 @@
     <vehicle id="18" depart="1848.48" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="123" depart="1849.67" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="93" depart="1886.85" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="124" depart="1932.75" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="64" depart="1935.92" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
@@ -296,13 +245,7 @@
     <vehicle id="25" depart="1943.63" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="119" depart="1950.91" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="57" depart="1972.95" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="139" depart="2012.06" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="13" depart="2039.96" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
@@ -350,16 +293,10 @@
     <vehicle id="41" depart="2359.25" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="149" depart="2368.14" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="47" depart="2402.94" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="110" depart="2416.61" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="127" depart="2431.38" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="21" depart="2436.32" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
@@ -389,12 +326,6 @@
     <vehicle id="76" depart="2581.58" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="135" depart="2585.76" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="148" depart="2609.20" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="59" depart="2624.03" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
@@ -416,28 +347,10 @@
     <vehicle id="4" depart="2950.16" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="121" depart="2951.61" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="120" depart="2982.05" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="141" depart="2986.29" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="90" depart="3029.70" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
-    <vehicle id="130" depart="3043.58" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="125" depart="3072.43" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
     <vehicle id="80" depart="3072.64" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="133" depart="3096.71" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="115" depart="3126.01" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
@@ -447,12 +360,6 @@
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="23" depart="3181.59" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="138" depart="3282.68" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="132" depart="3297.18" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="97" depart="3365.36" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
@@ -471,9 +378,6 @@
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="104" depart="3545.48" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="1062391649 23086918 1062391648"/>
-    </vehicle>
-    <vehicle id="126" depart="3569.32" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="1062391649 23086918 1062391648"/>
     </vehicle>
     <vehicle id="52" depart="3573.33" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">

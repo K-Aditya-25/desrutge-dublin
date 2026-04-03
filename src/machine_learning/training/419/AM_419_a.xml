@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-03-19 14:06:16 by Eclipse SUMO sumo Version 1.15.0
+<!-- generated on 2026-03-25 20:59:31 by Eclipse SUMO sumo Version 1.15.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
@@ -25,9 +25,9 @@
 -->
 
 <detector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/det_e1_file.xsd">
-    <interval begin="0.00" end="900.00" id="site_419_a" nVehContrib="230" flow="920.00" occupancy="17.62" speed="7.34" harmonicMeanSpeed="7.25" length="5.00" nVehEntered="230"/>
-    <interval begin="900.00" end="1800.00" id="site_419_a" nVehContrib="215" flow="860.00" occupancy="16.43" speed="7.40" harmonicMeanSpeed="7.27" length="5.00" nVehEntered="215"/>
-    <interval begin="1800.00" end="2700.00" id="site_419_a" nVehContrib="204" flow="816.00" occupancy="16.01" speed="7.29" harmonicMeanSpeed="7.08" length="5.00" nVehEntered="204"/>
-    <interval begin="2700.00" end="3600.00" id="site_419_a" nVehContrib="221" flow="884.00" occupancy="17.64" speed="7.12" harmonicMeanSpeed="6.99" length="5.00" nVehEntered="222"/>
-    <interval begin="3600.00" end="3621.00" id="site_419_a" nVehContrib="3" flow="514.29" occupancy="7.10" speed="6.97" harmonicMeanSpeed="6.94" length="5.00" nVehEntered="2"/>
+    <interval begin="0.00" end="900.00" id="site_419_a" nVehContrib="174" flow="696.00" occupancy="13.17" speed="7.47" harmonicMeanSpeed="7.34" length="5.00" nVehEntered="174"/>
+    <interval begin="900.00" end="1800.00" id="site_419_a" nVehContrib="152" flow="608.00" occupancy="11.48" speed="7.46" harmonicMeanSpeed="7.36" length="5.00" nVehEntered="152"/>
+    <interval begin="1800.00" end="2700.00" id="site_419_a" nVehContrib="160" flow="640.00" occupancy="12.51" speed="7.26" harmonicMeanSpeed="7.11" length="5.00" nVehEntered="161"/>
+    <interval begin="2700.00" end="3600.00" id="site_419_a" nVehContrib="151" flow="604.00" occupancy="11.32" speed="7.52" harmonicMeanSpeed="7.41" length="5.00" nVehEntered="150"/>
+    <interval begin="3600.00" end="3616.00" id="site_419_a" nVehContrib="1" flow="225.00" occupancy="4.43" speed="7.05" harmonicMeanSpeed="7.05" length="5.00" nVehEntered="1"/>
 </detector>

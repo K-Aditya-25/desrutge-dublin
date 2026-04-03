@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-03-19 14:06:17 by Eclipse SUMO sumo Version 1.15.0
+<!-- generated on 2026-03-25 20:57:54 by Eclipse SUMO sumo Version 1.15.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
@@ -25,9 +25,8 @@
 -->
 
 <detector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/det_e1_file.xsd">
-    <interval begin="0.00" end="900.00" id="site_94_a" nVehContrib="99" flow="396.00" occupancy="7.39" speed="7.53" harmonicMeanSpeed="7.44" length="5.00" nVehEntered="99"/>
-    <interval begin="900.00" end="1800.00" id="site_94_a" nVehContrib="80" flow="320.00" occupancy="5.82" speed="7.74" harmonicMeanSpeed="7.63" length="5.00" nVehEntered="80"/>
-    <interval begin="1800.00" end="2700.00" id="site_94_a" nVehContrib="96" flow="384.00" occupancy="7.40" speed="7.34" harmonicMeanSpeed="7.22" length="5.00" nVehEntered="97"/>
-    <interval begin="2700.00" end="3600.00" id="site_94_a" nVehContrib="87" flow="348.00" occupancy="6.39" speed="7.65" harmonicMeanSpeed="7.55" length="5.00" nVehEntered="86"/>
-    <interval begin="3600.00" end="3610.00" id="site_94_a" nVehContrib="1" flow="360.00" occupancy="5.16" speed="9.70" harmonicMeanSpeed="9.70" length="5.00" nVehEntered="1"/>
+    <interval begin="0.00" end="900.00" id="site_94_a" nVehContrib="55" flow="220.00" occupancy="4.05" speed="7.63" harmonicMeanSpeed="7.54" length="5.00" nVehEntered="55"/>
+    <interval begin="900.00" end="1800.00" id="site_94_a" nVehContrib="42" flow="168.00" occupancy="3.05" speed="7.71" harmonicMeanSpeed="7.66" length="5.00" nVehEntered="42"/>
+    <interval begin="1800.00" end="2700.00" id="site_94_a" nVehContrib="50" flow="200.00" occupancy="3.53" speed="7.96" harmonicMeanSpeed="7.87" length="5.00" nVehEntered="50"/>
+    <interval begin="2700.00" end="3589.00" id="site_94_a" nVehContrib="32" flow="129.58" occupancy="2.34" speed="7.75" harmonicMeanSpeed="7.68" length="5.00" nVehEntered="32"/>
 </detector>
