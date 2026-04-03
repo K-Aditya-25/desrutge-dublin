@@ -7,7 +7,13 @@ The current repo state is centered on:
 - Dublin SCATS preprocessing into site-level hourly profiles
 - per-site SUMO scenario authoring under `src/machine_learning/training/<site_id>/`
 - Dublin Voronoi-derived topology generation
-- bounded SUMO-backed decentralized smoke runs on a curated 18-site cloud subset
+- a restored paper-faithful hourly PPO traffic contract that assembles 24-hour site profiles sequentially
+- a reduced connected 8-site Dublin subset for faster round-scaling experiments
+- completed decentralized 8-site smoke and moderate-budget references
+- completed centralized 8-site smoke and moderate-budget references on a server-95 star topology
+- a first real decentralized 18-site SUMO baseline for that restored hourly contract
+- a direct restored-contract `10/2` decentralized result on the same 18-site subset
+- historical bounded smoke runs on the same subset from the earlier scalar-contract phase
 
 ## Project Structure
 
@@ -87,6 +93,11 @@ Important current behavior for the Dublin traffic path:
   - it uses `stable-baselines3` PPO with `MlpPolicy`
   - `MlpPolicy` is a neural-network policy/value model supplied by SB3
   - the neural-network architecture is library-provided rather than manually defined in this repo
+- the PPO traffic contract is now paper-faithful again:
+  - one PPO environment step calibrates one hour and executes SUMO once
+  - the daily `h00..h23` output is assembled sequentially by chaining 24 hourly calibrations with residual carry-forward
+  - training/evaluation outputs are full 24-hour simulated profiles plus profile metrics
+  - daily means remain available as derived summary values only
 - traffic profiles are bound by `site_id`, not CSV position
 - per-node model export is opt-in via `--saveNodeModels`
 
@@ -94,10 +105,26 @@ Important current behavior for the Dublin traffic path:
 
 ### Decentralized Dublin smoke run
 
-The currently representative bounded 18-site decentralized smoke command is:
+The current fast-iteration decentralized smoke command is:
 
 ```bash
-python3 ./src/main_sim_decentralized.py \
+UV_CACHE_DIR=.uv-cache uv run --no-sync python ./src/main_sim_decentralized.py \
+  -r 1 \
+  -t ./config/dublin_voronoi_fast_8.json \
+  -a Mean \
+  -db Traffic_Generator \
+  --trafficDataPath ./data/TrafficGeneration/dublin_march_2025/ \
+  --trafficSimulationMode sumo \
+  --trafficTotalTimesteps 1 \
+  --trafficEpisodeMaxSteps 1 \
+  --trafficTestEpisodes 1 \
+  -o ./output/decentralized_sim/dublin_fast_8_hourly_sumo_r1_smoke.json
+```
+
+The current 18-site restored-contract reference smoke remains:
+
+```bash
+UV_CACHE_DIR=.uv-cache uv run --no-sync python ./src/main_sim_decentralized.py \
   -r 1 \
   -t ./config/dublin_voronoi_first_cloud_18.json \
   -a Mean \
@@ -107,7 +134,7 @@ python3 ./src/main_sim_decentralized.py \
   --trafficTotalTimesteps 1 \
   --trafficEpisodeMaxSteps 1 \
   --trafficTestEpisodes 1 \
-  -o ./output/decentralized_sim/dublin_first_cloud_18_mean_r1_smoke.json
+  -o ./output/decentralized_sim/dublin_first_cloud_18_hourly_sumo_r1_smoke.json
 ```
 
 ### Centralized example
@@ -138,6 +165,11 @@ python3 ./src/main_sim_centralized.py \
 - `--saveNodeModels`: export per-node trained models after the run
 - `-o`: output JSON path
 
+Current output contract:
+
+- decentralized and centralized traffic results now emit full 24-hour profiles and profile metrics
+- older run artifacts such as `dublin_first_cloud_18_mean_r1_smoke.json` and `dublin_first_cloud_18_mean_r1_tt5_te1.json` belong to the earlier scalar-contract phase and should be treated as historical only
+
 ## Dublin SCATS Preprocessing
 
 The public repo does not include the original Barcelona traffic counts, and the root `data/TrafficGeneration/detector_data.csv` file is intentionally redacted for public release. For the Dublin path, use the processed Dublin dataset or regenerate it from raw Dublin inputs.
@@ -167,11 +199,17 @@ The repo currently includes:
 
 - `config/dublin_single_site_95.json`
 - `config/dublin_voronoi_smoke_5.json`
+- `config/dublin_voronoi_fast_8.json`
+- `config/dublin_centralized_fast_8_server_95.json`
 - `config/dublin_voronoi_topology.json`
 - `config/dublin_voronoi_first_cloud_18.json`
 
 The full Voronoi topology has `642` topology-ready sites.
-The current practical cloud target is the connected 18-site subset in `config/dublin_voronoi_first_cloud_18.json`.
+The current fast-iteration topology target is the connected 8-site subset in `config/dublin_voronoi_fast_8.json`.
+The current centralized comparison target is the server-95 star topology in `config/dublin_centralized_fast_8_server_95.json`.
+The current wider reference subset is the connected 18-site subset in `config/dublin_voronoi_first_cloud_18.json`.
+Current reduced-subset decentralized references now include `1/1/1` smoke through `r=5`, plus moderate-budget `5/1/1` and `10/2/1` runs at `r=1` and `r=2`.
+Current reduced-subset centralized references now include `1/1/1` smoke plus `5/1/1` and `10/2/1` at `r=1` and `r=2`, with server-only export for site `95`.
 
 ## SUMO Site Workflow
 
@@ -205,8 +243,27 @@ At the current repo snapshot:
 - Dublin Voronoi topology generation is implemented
 - site `95` is locally SUMO-runnable on the larger Dublin net
 - all `18/18` sites in the first-cloud subset have first-pass SUMO folders
-- bounded decentralized SUMO smoke execution for that subset has been verified
-- full-budget runs are still expensive and should be ramped up gradually
+- the reduced connected 8-site subset exists and passes framework validation in both `test` and `sumo` modes
+- the reduced 8-site centralized star topology centered on site `95` now also exists and has completed smoke and moderate references
+- the reduced 8-site subset now has:
+  - `r=1`, `1/1/1` real SUMO smoke at about `10m56s`
+  - `r=2`, `1/1/1` real SUMO smoke at about `24m24s`
+  - `r=4`, `1/1/1` real SUMO smoke at about `41m55s`
+  - `r=5`, `1/1/1` real SUMO smoke at about `54m18s`
+- the completed reduced-subset smoke sweep across `r=1..5` showed:
+  - runtime rises strongly with communication rounds because this trainer evaluates after every federated round
+  - aggregate smoke metrics drift modestly worse rather than better as rounds increase
+- the reduced 8-site centralized comparison path now has smoke plus `5/1/1` and `10/2/1` at `r=1` and `r=2`
+- the canonical centralized 8-site experiment log is now:
+  - `8siteCentralizedExperiments.md`
+- a dedicated Voronoi subset map now exists at:
+  - `data/TrafficGeneration/dublin_march_2025/voronoi_site_cells_fast_8_map.html`
+- the PPO traffic trainer now follows the paper-faithful hourly loop again while still emitting full 24-hour profile outputs
+- the restored-contract 18-site `sumo` path now has both a real `1/1/1` baseline and a direct real `10/2` result
+- trainer-level smoke validation passes in `test` mode for that restored contract
+- unrestricted decentralized `test`-mode validation now exists for the restored hourly sequential contract
+- the first real decentralized `sumo` baseline under that restored hourly sequential contract now exists at `output/decentralized_sim/dublin_first_cloud_18_hourly_sumo_r1_smoke.json`
+- that baseline completed in about `24m35s` wall clock from the recorded pre-launch timestamp, with site `57` as the clear runtime straggler
 
 ## Reference to the Paper
 
