@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meandata>
+    <interval begin="0" end="3600">
+        <edge id="1315558444#0" entered="476"/>
+    </interval>
+    <interval begin="3600" end="7200">
+        <edge id="1315558444#0" entered="348"/>
+    </interval>
+    <interval begin="7200" end="10800">
+        <edge id="1315558444#0" entered="235"/>
+    </interval>
+    <interval begin="10800" end="14400">
+        <edge id="1315558444#0" entered="199"/>
+    </interval>
+    <interval begin="14400" end="18000">
+        <edge id="1315558444#0" entered="185"/>
+    </interval>
+    <interval begin="18000" end="21600">
+        <edge id="1315558444#0" entered="158"/>
+    </interval>
+    <interval begin="21600" end="25200">
+        <edge id="1315558444#0" entered="239"/>
+    </interval>
+    <interval begin="25200" end="28800">
+        <edge id="1315558444#0" entered="610"/>
+    </interval>
+    <interval begin="28800" end="32400">
+        <edge id="1315558444#0" entered="963"/>
+    </interval>
+    <interval begin="32400" end="36000">
+        <edge id="1315558444#0" entered="1079"/>
+    </interval>
+    <interval begin="36000" end="39600">
+        <edge id="1315558444#0" entered="1084"/>
+    </interval>
+    <interval begin="39600" end="43200">
+        <edge id="1315558444#0" entered="1178"/>
+    </interval>
+    <interval begin="43200" end="46800">
+        <edge id="1315558444#0" entered="1268"/>
+    </interval>
+    <interval begin="46800" end="50400">
+        <edge id="1315558444#0" entered="1383"/>
+    </interval>
+    <interval begin="50400" end="54000">
+        <edge id="1315558444#0" entered="1397"/>
+    </interval>
+    <interval begin="54000" end="57600">
+        <edge id="1315558444#0" entered="1407"/>
+    </interval>
+    <interval begin="57600" end="61200">
+        <edge id="1315558444#0" entered="1459"/>
+    </interval>
+    <interval begin="61200" end="64800">
+        <edge id="1315558444#0" entered="1470"/>
+    </interval>
+    <interval begin="64800" end="68400">
+        <edge id="1315558444#0" entered="1435"/>
+    </interval>
+    <interval begin="68400" end="72000">
+        <edge id="1315558444#0" entered="1289"/>
+    </interval>
+    <interval begin="72000" end="75600">
+        <edge id="1315558444#0" entered="1140"/>
+    </interval>
+    <interval begin="75600" end="79200">
+        <edge id="1315558444#0" entered="897"/>
+    </interval>
+    <interval begin="79200" end="82800">
+        <edge id="1315558444#0" entered="686"/>
+    </interval>
+    <interval begin="82800" end="86400">
+        <edge id="1315558444#0" entered="606"/>
+    </interval>
+</meandata>

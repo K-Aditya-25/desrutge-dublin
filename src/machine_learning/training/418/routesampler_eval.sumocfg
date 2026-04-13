@@ -1,0 +1,15 @@
+<configuration>
+    <input>
+        <net-file value="osm_dublin_bigger.net.xml"/>
+        <additional-files value="detectors.add.xml"/>
+        <route-files value="routesampler_output.rou.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+    </time>
+
+    <processing>
+        <time-to-teleport value="300"/>
+    </processing>
+</configuration>

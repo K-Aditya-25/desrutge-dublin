@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-03-25 21:02:38 by Eclipse SUMO duarouter Version 1.15.0
+<!-- generated on 2026-04-13 10:44:59 by Eclipse SUMO duarouter Version 1.15.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
 
     <input>
@@ -27,11 +27,6 @@
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
     <vehicle id="63" depart="0.79" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="283" depart="2.83" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
@@ -221,11 +216,6 @@
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="299" depart="422.38" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="33" depart="423.68" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
@@ -307,21 +297,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="266" depart="640.55" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="296" depart="663.46" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="293" depart="665.77" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="277" depart="666.97" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
@@ -441,11 +416,6 @@
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="292" depart="884.88" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="12" depart="912.02" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
@@ -472,11 +442,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="29" depart="972.03" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="278" depart="1006.70" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
@@ -532,16 +497,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="55" depart="1130.77" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="298" depart="1144.44" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="286" depart="1151.30" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
@@ -716,11 +671,6 @@
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="294" depart="1679.21" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="195" depart="1682.30" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
@@ -742,16 +692,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="154" depart="1708.06" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="297" depart="1734.61" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="289" depart="1743.04" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
@@ -851,11 +791,6 @@
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="281" depart="1954.95" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="57" depart="1972.95" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
@@ -881,11 +816,6 @@
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="287" depart="2090.70" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="213" depart="2097.14" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
@@ -896,22 +826,12 @@
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="280" depart="2136.58" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="66" depart="2137.39" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
     <vehicle id="43" depart="2138.70" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="285" depart="2150.38" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
@@ -1061,11 +981,6 @@
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="300" depart="2469.99" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="0" depart="2488.08" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
@@ -1087,11 +1002,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="72" depart="2537.50" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="301" depart="2541.66" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
@@ -1172,11 +1082,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="185" depart="2643.76" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="288" depart="2691.76" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
@@ -1321,11 +1226,6 @@
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="290" depart="3004.63" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="270" depart="3012.32" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
@@ -1356,11 +1256,6 @@
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="282" depart="3060.08" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="218" depart="3069.64" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
@@ -1376,11 +1271,6 @@
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
     </vehicle>
-    <vehicle id="291" depart="3090.36" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
     <vehicle id="133" depart="3096.71" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
@@ -1392,11 +1282,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="115" depart="3126.01" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="284" depart="3141.88" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
@@ -1417,11 +1302,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="194" depart="3234.64" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="279" depart="3235.57" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>
@@ -1512,11 +1392,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="104" depart="3545.48" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="295" depart="3554.81" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="8.70" probability="1.00000000" edges="928725821#2 928725821#3 1097499207"/>
         </routeDistribution>

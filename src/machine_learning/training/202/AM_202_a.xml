@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-03-25 21:01:00 by Eclipse SUMO sumo Version 1.15.0
+<!-- generated on 2026-04-13 10:45:12 by Eclipse SUMO sumo Version 1.15.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
@@ -25,9 +25,9 @@
 -->
 
 <detector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/det_e1_file.xsd">
-    <interval begin="0.00" end="900.00" id="site_202_a" nVehContrib="165" flow="660.00" occupancy="12.25" speed="7.55" harmonicMeanSpeed="7.48" length="5.00" nVehEntered="165"/>
-    <interval begin="900.00" end="1800.00" id="site_202_a" nVehContrib="141" flow="564.00" occupancy="10.58" speed="7.49" harmonicMeanSpeed="7.41" length="5.00" nVehEntered="141"/>
-    <interval begin="1800.00" end="2700.00" id="site_202_a" nVehContrib="147" flow="588.00" occupancy="10.86" speed="7.62" harmonicMeanSpeed="7.52" length="5.00" nVehEntered="147"/>
-    <interval begin="2700.00" end="3600.00" id="site_202_a" nVehContrib="142" flow="568.00" occupancy="10.48" speed="7.63" harmonicMeanSpeed="7.53" length="5.00" nVehEntered="142"/>
+    <interval begin="0.00" end="900.00" id="site_202_a" nVehContrib="150" flow="600.00" occupancy="11.10" speed="7.59" harmonicMeanSpeed="7.51" length="5.00" nVehEntered="150"/>
+    <interval begin="900.00" end="1800.00" id="site_202_a" nVehContrib="130" flow="520.00" occupancy="9.69" speed="7.56" harmonicMeanSpeed="7.45" length="5.00" nVehEntered="130"/>
+    <interval begin="1800.00" end="2700.00" id="site_202_a" nVehContrib="136" flow="544.00" occupancy="10.10" speed="7.58" harmonicMeanSpeed="7.48" length="5.00" nVehEntered="136"/>
+    <interval begin="2700.00" end="3600.00" id="site_202_a" nVehContrib="130" flow="520.00" occupancy="9.63" speed="7.61" harmonicMeanSpeed="7.50" length="5.00" nVehEntered="130"/>
     <interval begin="3600.00" end="3601.00" id="site_202_a" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
 </detector>

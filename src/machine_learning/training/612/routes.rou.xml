@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-03-25 20:52:18 by Eclipse SUMO duarouter Version 1.15.0
+<!-- generated on 2026-04-13 10:43:47 by Eclipse SUMO duarouter Version 1.15.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
 
     <input>
@@ -111,9 +111,6 @@
         <route edges="39994843#1 14401069#0 14401069#1"/>
     </vehicle>
     <vehicle id="22" depart="1651.42" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <route edges="39994843#1 14401069#0 14401069#1"/>
-    </vehicle>
-    <vehicle id="56" depart="1669.56" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <route edges="39994843#1 14401069#0 14401069#1"/>
     </vehicle>
     <vehicle id="44" depart="1762.81" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">

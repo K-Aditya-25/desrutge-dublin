@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-03-25 20:56:02 by Eclipse SUMO duarouter Version 1.15.0
+<!-- generated on 2026-04-13 10:44:54 by Eclipse SUMO duarouter Version 1.15.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
 
     <input>
@@ -62,11 +62,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="92" depart="169.75" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="2.60" probability="1.00000000" edges="33920769#2 33920769#3 33920769#4"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="137" depart="179.52" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="2.60" probability="1.00000000" edges="33920769#2 33920769#3 33920769#4"/>
         </routeDistribution>
@@ -667,11 +662,6 @@
         </routeDistribution>
     </vehicle>
     <vehicle id="23" depart="3181.59" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
-        <routeDistribution last="0">
-            <route cost="2.60" probability="1.00000000" edges="33920769#2 33920769#3 33920769#4"/>
-        </routeDistribution>
-    </vehicle>
-    <vehicle id="138" depart="3282.68" departLane="random" departSpeed="max" fromTaz="taz" toTaz="taz">
         <routeDistribution last="0">
             <route cost="2.60" probability="1.00000000" edges="33920769#2 33920769#3 33920769#4"/>
         </routeDistribution>

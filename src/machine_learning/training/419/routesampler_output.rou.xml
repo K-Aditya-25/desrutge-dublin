@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-04-13 04:27:17.414418 by routeSampler.py UNKNOWN
+<configuration>
+    <begin value="0"/>
+    <edgedata-files value="routesampler_counts.xml"/>
+    <end value="86400"/>
+    <interval value="3600"/>
+    <output-file value="routesampler_output.rou.xml"/>
+    <route-files value="routesampler_candidates.rou.xml"/>
+    <write-flows value="number"/>
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+<!-- begin="0.0" end="3600.0" -->
+    <flow id="0_0" begin="0.00" end="3592.44" number="476">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="3600.0" end="7200.0" -->
+    <flow id="3600_0" begin="3600.00" end="7189.66" number="348">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="7200.0" end="10800.0" -->
+    <flow id="7200_0" begin="7200.00" end="10784.68" number="235">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="10800.0" end="14400.0" -->
+    <flow id="10800_0" begin="10800.00" end="14381.91" number="199">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="14400.0" end="18000.0" -->
+    <flow id="14400_0" begin="14400.00" end="17980.54" number="185">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="18000.0" end="21600.0" -->
+    <flow id="18000_0" begin="18000.00" end="21577.22" number="158">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="21600.0" end="25200.0" -->
+    <flow id="21600_0" begin="21600.00" end="25184.94" number="239">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="25200.0" end="28800.0" -->
+    <flow id="25200_0" begin="25200.00" end="28794.10" number="610">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="28800.0" end="32400.0" -->
+    <flow id="28800_0" begin="28800.00" end="32396.26" number="963">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="32400.0" end="36000.0" -->
+    <flow id="32400_0" begin="32400.00" end="35996.66" number="1079">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="36000.0" end="39600.0" -->
+    <flow id="36000_0" begin="36000.00" end="39596.68" number="1084">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="39600.0" end="43200.0" -->
+    <flow id="39600_0" begin="39600.00" end="43196.94" number="1178">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="43200.0" end="46800.0" -->
+    <flow id="43200_0" begin="43200.00" end="46797.16" number="1268">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="46800.0" end="50400.0" -->
+    <flow id="46800_0" begin="46800.00" end="50397.40" number="1383">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="50400.0" end="54000.0" -->
+    <flow id="50400_0" begin="50400.00" end="53997.42" number="1397">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="54000.0" end="57600.0" -->
+    <flow id="54000_0" begin="54000.00" end="57597.44" number="1407">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="57600.0" end="61200.0" -->
+    <flow id="57600_0" begin="57600.00" end="61197.53" number="1459">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="61200.0" end="64800.0" -->
+    <flow id="61200_0" begin="61200.00" end="64797.55" number="1470">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="64800.0" end="68400.0" -->
+    <flow id="64800_0" begin="64800.00" end="68397.49" number="1435">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="68400.0" end="72000.0" -->
+    <flow id="68400_0" begin="68400.00" end="71997.21" number="1289">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="72000.0" end="75600.0" -->
+    <flow id="72000_0" begin="72000.00" end="75596.84" number="1140">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="75600.0" end="79200.0" -->
+    <flow id="75600_0" begin="75600.00" end="79195.99" number="897">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="79200.0" end="82800.0" -->
+    <flow id="79200_0" begin="79200.00" end="82794.75" number="686">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+<!-- begin="82800.0" end="86400.0" -->
+    <flow id="82800_0" begin="82800.00" end="86394.06" number="606">
+        <route edges="33920769#5 1315558444#0 1315558444#1"/>
+    </flow>
+</routes>

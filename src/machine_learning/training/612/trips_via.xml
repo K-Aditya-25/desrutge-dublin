@@ -28,32 +28,31 @@
     <trip id="35" depart="1302.21" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
     <trip id="8" depart="1580.77" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
     <trip id="22" depart="1651.42" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="56" depart="1669.56" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="44" depart="1762.81" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="32" depart="1763.21" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="6" depart="1817.33" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="48" depart="1822.07" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="2" depart="1847.70" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="18" depart="1848.48" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="25" depart="1943.63" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="13" depart="2039.96" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="45" depart="2104.54" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="43" depart="2138.70" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="34" depart="2169.75" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="46" depart="2198.82" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="20" depart="2239.54" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="38" depart="2264.40" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="37" depart="2276.89" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="36" depart="2279.74" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="10" depart="2300.46" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="41" depart="2359.25" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="47" depart="2402.94" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="21" depart="2436.32" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="0" depart="2488.08" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="51" depart="2807.46" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="4" depart="2950.16" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="23" depart="3181.59" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="31" depart="3381.69" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
-    <trip id="53" depart="3425.09" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
-    <trip id="52" depart="3573.33" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="44" depart="1762.81" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="32" depart="1763.21" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="6" depart="1817.33" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="48" depart="1822.07" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="2" depart="1847.70" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="18" depart="1848.48" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="25" depart="1943.63" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="13" depart="2039.96" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="45" depart="2104.54" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="43" depart="2138.70" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="34" depart="2169.75" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="46" depart="2198.82" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="20" depart="2239.54" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="38" depart="2264.40" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="37" depart="2276.89" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="36" depart="2279.74" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="10" depart="2300.46" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="41" depart="2359.25" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="47" depart="2402.94" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="21" depart="2436.32" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="0" depart="2488.08" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="51" depart="2807.46" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="4" depart="2950.16" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="23" depart="3181.59" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="31" depart="3381.69" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
+    <trip id="53" depart="3425.09" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" via="14401069#0" />
+    <trip id="52" depart="3573.33" from="39994843#1" to="14401069#1" fromTaz="taz" toTaz="taz" departLane="random" departSpeed="max" />
 </routes>
