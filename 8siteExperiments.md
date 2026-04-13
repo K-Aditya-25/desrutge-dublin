@@ -12,6 +12,58 @@ Associated Voronoi subset map:
 
 - `./data/TrafficGeneration/dublin_march_2025/voronoi_site_cells_fast_8_map.html`
 
+## 2026-04-13: Dublin-Only `routeSampler.py` Baseline, Reduced 8-Site Subset
+
+- Command:
+  - `./.venv/bin/python scripts/evaluate_routesampler_baseline.py --output ./output/routesampler/dublin_fast_8_routesampler_baseline.json`
+- Finished cleanly:
+  - yes
+- Output written:
+  - `./output/routesampler/dublin_fast_8_routesampler_baseline.json`
+- Key metrics:
+  - mean `profile_mae`: about `171.00`
+  - mean `profile_rmse`: about `294.78`
+  - best baseline sites by `profile_mae`: `418` and `95`, both effectively `0.00`
+  - worst baseline site by `profile_mae`: site `60`, about `1181.63`
+- Study role:
+  - Dublin-only SUMO-tool baseline for paper-aligned comparison against the best faithful decentralized 8-site DesRUTGe run
+
+## 2026-04-13: Dublin-Only Volume-Affinity Faithful Validation, `r=5`, `1/1/1`
+
+- Command:
+  - `UV_CACHE_DIR=.uv-cache uv run --no-sync python ./src/main_sim_decentralized.py -r 5 -t ./config/dublin_voronoi_fast_8_volume_affinity.json -a Mean -db Traffic_Generator --trafficDataPath ./data/TrafficGeneration/dublin_march_2025/ --trafficSimulationMode sumo --trafficTotalTimesteps 1 --trafficEpisodeMaxSteps 1 --trafficTestEpisodes 1 -o ./output/decentralized_sim/dublin_fast_8_volume_affinity_r5_smoke.json`
+- Finished cleanly:
+  - yes
+- Output written:
+  - `./output/decentralized_sim/dublin_fast_8_volume_affinity_r5_smoke.json`
+- Key metrics by round:
+  - round `1`: mean `profile_mae` about `126.77`, mean reward about `0.5625`
+  - round `2`: mean `profile_mae` about `131.94`, mean reward about `0.5365`
+  - round `3`: mean `profile_mae` about `136.68`, mean reward about `0.4948`
+  - round `4`: mean `profile_mae` about `142.48`, mean reward about `0.4896`
+  - round `5`: mean `profile_mae` about `147.59`, mean reward about `0.4896`
+- Study role:
+  - Dublin-only model-exchange validation using neighbor sets induced by volume affinity instead of Voronoi adjacency
+
+## 2026-04-13: Dublin-Only Pattern-Affinity Faithful Validation, `r=5`, `1/1/1`
+
+- Command:
+  - `UV_CACHE_DIR=.uv-cache uv run --no-sync python ./src/main_sim_decentralized.py -r 5 -t ./config/dublin_voronoi_fast_8_pattern_affinity.json -a Mean -db Traffic_Generator --trafficDataPath ./data/TrafficGeneration/dublin_march_2025/ --trafficSimulationMode sumo --trafficTotalTimesteps 1 --trafficEpisodeMaxSteps 1 --trafficTestEpisodes 1 -o ./output/decentralized_sim/dublin_fast_8_pattern_affinity_r5_smoke.json`
+- Parent-reported worker completion:
+  - about `3121.28s`
+- Finished cleanly:
+  - yes
+- Output written:
+  - `./output/decentralized_sim/dublin_fast_8_pattern_affinity_r5_smoke.json`
+- Key metrics by round:
+  - round `1`: mean `profile_mae` about `123.19`, mean reward about `0.6302`
+  - round `2`: mean `profile_mae` about `122.40`, mean reward about `0.7083`
+  - round `3`: mean `profile_mae` about `124.63`, mean reward about `0.5781`
+  - round `4`: mean `profile_mae` about `126.95`, mean reward about `0.4844`
+  - round `5`: mean `profile_mae` about `129.33`, mean reward about `0.5365`
+- Study role:
+  - Dublin-only model-exchange validation using neighbor sets induced by daily-profile pattern affinity instead of Voronoi adjacency
+
 ## 2026-03-24: Restored-Contract Real SUMO Smoke, `r=1`, `1/1/1`
 
 - Command:
@@ -258,6 +310,63 @@ Associated Voronoi subset map:
 - Runtime notes:
   - this is the clearest sign yet that more rounds are not paying off on the current VM
   - round-1 barrier waits became large enough to dominate the runtime of early finishers:
+
+## 2026-04-13: Dublin `routeSampler.py` Baseline On The Reduced 8-Site Subset
+
+- Command:
+  - `./.venv/bin/python ./scripts/evaluate_routesampler_baseline.py -output ./output/routesampler/dublin_fast_8_routesampler_baseline.json`
+- Scope:
+  - faithful Dublin-only baseline on sites `95`, `94`, `418`, `419`, `612`, `925`, `60`, `202`
+  - same daily-profile metric contract used by the reduced 8-site DesRUTGe runs
+- Finished cleanly:
+  - yes
+- Output written:
+  - `./output/routesampler/dublin_fast_8_routesampler_baseline.json`
+- Baseline notes:
+  - the helper builds oversized candidate route files from each Dublin site's existing corridor route and then applies SUMO's `routeSampler.py` against hourly edge-count targets
+  - several simpler corridor sites matched almost exactly under this baseline
+  - the heaviest corridors remained materially harder for `routeSampler.py`, especially site `60`
+- Key metrics:
+  - mean `profile_mae`: about `171.00`
+  - mean `profile_rmse`: about `294.78`
+  - strongest baseline sites by `profile_mae`:
+    - `95`: `0.00`
+    - `418`: `0.00`
+    - `612`: `0.00`
+  - weakest baseline sites by `profile_mae`:
+    - `60`: about `1181.63`
+    - `419`: about `128.75`
+    - `202`: about `57.42`
+- Comparison note:
+  - the current best faithful reduced-subset decentralized run remains `./output/decentralized_sim/dublin_fast_8_hourly_sumo_r1_smoke.json`
+  - on mean `profile_mae`, that DesRUTGe point stayed below the new `routeSampler.py` baseline
+
+## 2026-04-13: Volume-Affinity Neighbor Validation, `r=5`, `1/1/1`
+
+- Topology:
+  - `./config/dublin_voronoi_fast_8_volume_affinity.json`
+- Cluster structure:
+  - cluster `0`: `95`, `94`, `418`, `612`, `925`
+  - cluster `1`: `419`, `202`
+  - cluster `2`: `60`
+- Command:
+  - `UV_CACHE_DIR=.uv-cache uv run --no-sync python ./src/main_sim_decentralized.py -r 5 -t ./config/dublin_voronoi_fast_8_volume_affinity.json -a Mean -db Traffic_Generator --trafficDataPath ./data/TrafficGeneration/dublin_march_2025/ --trafficSimulationMode sumo --trafficTotalTimesteps 1 --trafficEpisodeMaxSteps 1 --trafficTestEpisodes 1 -o ./output/decentralized_sim/dublin_fast_8_volume_affinity_r5_smoke.json`
+- Finished cleanly:
+  - yes
+- Output written:
+  - `./output/decentralized_sim/dublin_fast_8_volume_affinity_r5_smoke.json`
+- Worker completion:
+  - about `3103.61s`
+- Key metrics by round:
+  - round `1`: mean `profile_mae` about `126.77`, mean reward about `0.5625`
+  - round `2`: mean `profile_mae` about `131.94`, mean reward about `0.5365`
+  - round `3`: mean `profile_mae` about `136.68`, mean reward about `0.4948`
+  - round `4`: mean `profile_mae` about `142.48`, mean reward about `0.4896`
+  - round `5`: mean `profile_mae` about `147.59`, mean reward about `0.4896`
+- Runtime notes:
+  - this affinity strategy completed all five faithful rounds on Dublin-only data
+  - the singleton high-volume cluster left site `60` with no neighbors, making this a materially different exchange structure than the geographic topology
+  - degradation across rounds remained directionally worse rather than better, matching the broader reduced-subset pattern
     - site `612`: about `646.85s`
     - site `418`: about `574.94s`
     - site `95`: about `531.95s`
