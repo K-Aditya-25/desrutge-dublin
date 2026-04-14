@@ -1,59 +1,40 @@
-# DesRUTGe: Realistic Urban Traffic Generator using Decentralized Federated Learning for the SUMO simulator
+# DesRUTGe Dublin
 
-This repository adapts DesRUTGe toward Dublin SCATS traffic data while keeping the repo's SUMO + PPO + federated/decentralized structure.
+This repository adapts DesRUTGe toward Dublin SCATS traffic data while keeping the original SUMO, PPO, and decentralized federated-learning structure. The current codebase is centered on building per-site Dublin SUMO scenarios, running centralized or decentralized traffic calibration experiments, and generating figures and helper artifacts for the reduced Dublin subsets used in the repo.
 
-The current repo state is centered on:
+## What Is In The Repo
 
-- Dublin SCATS preprocessing into site-level hourly profiles
-- per-site SUMO scenario authoring under `src/machine_learning/training/<site_id>/`
-- Dublin Voronoi-derived topology generation
-- a restored paper-faithful hourly PPO traffic contract that assembles 24-hour site profiles sequentially
-- a reduced connected 8-site Dublin subset for faster round-scaling experiments
-- completed decentralized 8-site smoke and moderate-budget references
-- completed centralized 8-site smoke and moderate-budget references on a server-95 star topology
-- a first real decentralized 18-site SUMO baseline for that restored hourly contract
-- a direct restored-contract `10/2` decentralized result on the same 18-site subset
-- historical bounded smoke runs on the same subset from the earlier scalar-contract phase
+- Dublin SCATS preprocessing into site-level hourly traffic profiles
+- Per-site SUMO scenario folders under `src/machine_learning/training/<site_id>/`
+- Dublin topology configs for single-site, reduced-subset, centralized-star, and wider Voronoi-derived runs
+- A paper-faithful hourly PPO traffic contract that assembles full 24-hour profiles sequentially
+- Helpers for validation, routeSampler baselines, topology derivation, and paper-style visualization outputs
 
 ## Project Structure
 
 - `config/`: topology and simulation configuration JSON files
 - `data/`: raw Dublin inputs and processed traffic artifacts
-- `docs/`: Dublin workflow and execution notes
-- `scripts/`: preprocessing, SUMO-site authoring, topology, validation, and evaluation helpers
+- `docs/`: workflow notes, execution notes, and generated paper-facing figures
+- `scripts/`: preprocessing, topology, validation, evaluation, and plotting helpers
 - `src/`: simulation source code
-  - `src/entities/`: centralized/decentralized node roles
-  - `src/machine_learning/dataset/`: dataset loaders and traffic-profile preparation
-  - `src/machine_learning/training/`: PPO traffic environment, SUMO runtime, and per-site SUMO folders
-  - `src/simulator/`: orchestration of centralized and decentralized simulation runs
-  - `src/main_sim_decentralized.py`: decentralized entrypoint
-  - `src/main_sim_centralized.py`: centralized entrypoint
+- `src/entities/`: centralized and decentralized node roles
+- `src/machine_learning/dataset/`: traffic-profile loading and preparation
+- `src/machine_learning/training/`: PPO traffic environment, SUMO runtime, and per-site SUMO folders
+- `src/simulator/`: centralized and decentralized orchestration
+- `src/main_sim_decentralized.py`: decentralized entrypoint
+- `src/main_sim_centralized.py`: centralized entrypoint
 
 ## Requirements
 
 - Python `>=3.10,<3.11`
 - SUMO tooling available on the machine:
-  - `sumo`
-  - `od2trips`
-  - `duarouter`
-  - `netconvert`
-  - `netedit`
+- `sumo`
+- `od2trips`
+- `duarouter`
+- `netconvert`
+- `netedit`
 
-Current Python dependencies are defined in `pyproject.toml`. Key packages include:
-
-- `torch==2.0.1`
-- `torchvision==0.15.2`
-- `stable-baselines3==2.2.1`
-- `gymnasium==0.29.1`
-- `numpy==1.24.1`
-- `pandas==1.5.3`
-- `scikit-learn==1.4.1.post1`
-- `scipy==1.11.3`
-- `shapely`
-- `osmium`
-- `matplotlib==3.7.1`
-- `seaborn==0.13.0`
-- `lxml`
+Dependencies are defined in [pyproject.toml](/home/adityakharbanda/desrutge-dublin/pyproject.toml). The main runtime stack includes `torch`, `stable-baselines3`, `gymnasium`, `numpy`, `pandas`, `scikit-learn`, `scipy`, `matplotlib`, `seaborn`, `shapely`, `osmium`, and `lxml`.
 
 ## Installation
 
@@ -64,13 +45,13 @@ git clone https://gitlab.com/compromise3/desrutge.git
 cd desrutge
 ```
 
-Using `uv` is the current preferred path:
+Using `uv` is the preferred path:
 
 ```bash
 uv sync
 ```
 
-If you are using plain `pip`, install from the repo metadata or `requirements.txt`:
+If you are using plain `pip`:
 
 ```bash
 pip install -e .
@@ -82,30 +63,23 @@ or:
 pip install -r requirements.txt
 ```
 
-## Current Repo Behavior
+## Simulation Behavior
 
-Important current behavior for the Dublin traffic path:
+Important repo behavior for the Dublin traffic path:
 
-- `Traffic_Generator` now defaults to the SUMO-backed path via `--trafficSimulationMode sumo`
+- `Traffic_Generator` uses the SUMO-backed path with `--trafficSimulationMode sumo`
 - surrogate mode remains available as `--trafficSimulationMode test`
 - the PPO environment uses Gymnasium
-- the traffic path is a deep reinforcement learning setup:
-  - it uses `stable-baselines3` PPO with `MlpPolicy`
-  - `MlpPolicy` is a neural-network policy/value model supplied by SB3
-  - the neural-network architecture is library-provided rather than manually defined in this repo
-- the PPO traffic contract is now paper-faithful again:
-  - one PPO environment step calibrates one hour and executes SUMO once
-  - the daily `h00..h23` output is assembled sequentially by chaining 24 hourly calibrations with residual carry-forward
-  - training/evaluation outputs are full 24-hour simulated profiles plus profile metrics
-  - daily means remain available as derived summary values only
-- traffic profiles are bound by `site_id`, not CSV position
+- the trainer uses `stable-baselines3` PPO with `MlpPolicy`
+- one PPO environment step calibrates one hour and executes SUMO once
+- full daily `h00..h23` profiles are assembled by chaining 24 hourly calibrations with residual carry-forward
+- run outputs contain full 24-hour simulated profiles and per-profile metrics
+- traffic profiles are keyed by `site_id`, not CSV position
 - per-node model export is opt-in via `--saveNodeModels`
 
 ## Usage
 
-### Decentralized Dublin smoke run
-
-The current fast-iteration decentralized smoke command is:
+### Decentralized Dublin 8-site smoke run
 
 ```bash
 UV_CACHE_DIR=.uv-cache uv run --no-sync python ./src/main_sim_decentralized.py \
@@ -121,7 +95,7 @@ UV_CACHE_DIR=.uv-cache uv run --no-sync python ./src/main_sim_decentralized.py \
   -o ./output/decentralized_sim/dublin_fast_8_hourly_sumo_r1_smoke.json
 ```
 
-The current 18-site restored-contract reference smoke remains:
+### Decentralized Dublin 18-site reference smoke
 
 ```bash
 UV_CACHE_DIR=.uv-cache uv run --no-sync python ./src/main_sim_decentralized.py \
@@ -137,7 +111,7 @@ UV_CACHE_DIR=.uv-cache uv run --no-sync python ./src/main_sim_decentralized.py \
   -o ./output/decentralized_sim/dublin_first_cloud_18_hourly_sumo_r1_smoke.json
 ```
 
-### Centralized example
+### Centralized Dublin example
 
 ```bash
 python3 ./src/main_sim_centralized.py \
@@ -151,7 +125,7 @@ python3 ./src/main_sim_centralized.py \
   -o ./output/centralized_sim/centralized_mean.json
 ```
 
-### Key CLI parameters
+### Useful CLI parameters
 
 - `-r`: communication rounds
 - `-t`: topology JSON
@@ -165,14 +139,9 @@ python3 ./src/main_sim_centralized.py \
 - `--saveNodeModels`: export per-node trained models after the run
 - `-o`: output JSON path
 
-Current output contract:
+## Dublin Data Preprocessing
 
-- decentralized and centralized traffic results now emit full 24-hour profiles and profile metrics
-- older run artifacts such as `dublin_first_cloud_18_mean_r1_smoke.json` and `dublin_first_cloud_18_mean_r1_tt5_te1.json` belong to the earlier scalar-contract phase and should be treated as historical only
-
-## Dublin SCATS Preprocessing
-
-The public repo does not include the original Barcelona traffic counts, and the root `data/TrafficGeneration/detector_data.csv` file is intentionally redacted for public release. For the Dublin path, use the processed Dublin dataset or regenerate it from raw Dublin inputs.
+The public repo does not include the original Barcelona traffic counts, and the root `data/TrafficGeneration/detector_data.csv` file is intentionally redacted. For the Dublin path, use the processed Dublin dataset or regenerate it from raw Dublin inputs.
 
 To preprocess Dublin SCATS hourly counts into the repo-facing format:
 
@@ -195,31 +164,28 @@ This produces artifacts such as:
 
 ## Dublin Topology Artifacts
 
-The repo currently includes:
+The repo includes these Dublin topology configs:
 
 - `config/dublin_single_site_95.json`
 - `config/dublin_voronoi_smoke_5.json`
 - `config/dublin_voronoi_fast_8.json`
 - `config/dublin_centralized_fast_8_server_95.json`
+- `config/dublin_voronoi_fast_8_pattern_affinity.json`
+- `config/dublin_voronoi_fast_8_volume_affinity.json`
 - `config/dublin_voronoi_topology.json`
 - `config/dublin_voronoi_first_cloud_18.json`
 
-The full Voronoi topology has `642` topology-ready sites.
-The current fast-iteration topology target is the connected 8-site subset in `config/dublin_voronoi_fast_8.json`.
-The current centralized comparison target is the server-95 star topology in `config/dublin_centralized_fast_8_server_95.json`.
-The current wider reference subset is the connected 18-site subset in `config/dublin_voronoi_first_cloud_18.json`.
-Current reduced-subset decentralized references now include `1/1/1` smoke through `r=5`, plus moderate-budget `5/1/1` and `10/2/1` runs at `r=1` and `r=2`.
-Current reduced-subset centralized references now include `1/1/1` smoke plus `5/1/1` and `10/2/1` at `r=1` and `r=2`, with server-only export for site `95`.
+In practice:
+
+- `config/dublin_voronoi_fast_8.json` is the main reduced connected subset for fast decentralized runs
+- `config/dublin_centralized_fast_8_server_95.json` is the server-95 star topology for centralized comparisons
+- `config/dublin_voronoi_fast_8_pattern_affinity.json` and `config/dublin_voronoi_fast_8_volume_affinity.json` are affinity-derived alternatives for the same 8-site subset
+- `config/dublin_voronoi_first_cloud_18.json` is the wider connected reference subset
+- `config/dublin_voronoi_topology.json` is the larger topology-ready Dublin site graph
 
 ## SUMO Site Workflow
 
-The first local proof site remains site `95`:
-
-- folder: `src/machine_learning/training/95/`
-- current larger-net mapping:
-  - source edge `33920769#2`
-  - detector lane `33920769#3_0`
-  - sink edge `33920769#4`
+The per-site SUMO scenarios live under `src/machine_learning/training/`. Site `95` remains a useful local proof site for one-site validation and inspection.
 
 Useful commands:
 
@@ -235,44 +201,21 @@ python3 ./scripts/evaluate_one_site_sumo.py --site-dir ./src/machine_learning/tr
 python3 ./scripts/validate_dublin_framework.py --topology ./config/dublin_voronoi_smoke_5.json --traffic-simulation-mode test
 ```
 
-## Current Status
+## Analysis And Figure Helpers
 
-At the current repo snapshot:
+The repo also includes Dublin-specific helpers for experiment support and paper-style outputs, including:
 
-- Dublin preprocessing is implemented
-- Dublin Voronoi topology generation is implemented
-- site `95` is locally SUMO-runnable on the larger Dublin net
-- all `18/18` sites in the first-cloud subset have first-pass SUMO folders
-- the reduced connected 8-site subset exists and passes framework validation in both `test` and `sumo` modes
-- the reduced 8-site centralized star topology centered on site `95` now also exists and has completed smoke and moderate references
-- the reduced 8-site subset now has:
-  - `r=1`, `1/1/1` real SUMO smoke at about `10m56s`
-  - `r=2`, `1/1/1` real SUMO smoke at about `24m24s`
-  - `r=4`, `1/1/1` real SUMO smoke at about `41m55s`
-  - `r=5`, `1/1/1` real SUMO smoke at about `54m18s`
-- the completed reduced-subset smoke sweep across `r=1..5` showed:
-  - runtime rises strongly with communication rounds because this trainer evaluates after every federated round
-  - aggregate smoke metrics drift modestly worse rather than better as rounds increase
-- the reduced 8-site centralized comparison path now has smoke plus `5/1/1` and `10/2/1` at `r=1` and `r=2`
-- the canonical centralized 8-site experiment log is now:
-  - `8siteCentralizedExperiments.md`
-- a dedicated Voronoi subset map now exists at:
-  - `data/TrafficGeneration/dublin_march_2025/voronoi_site_cells_fast_8_map.html`
-- the PPO traffic trainer now follows the paper-faithful hourly loop again while still emitting full 24-hour profile outputs
-- the restored-contract 18-site `sumo` path now has both a real `1/1/1` baseline and a direct real `10/2` result
-- trainer-level smoke validation passes in `test` mode for that restored contract
-- unrestricted decentralized `test`-mode validation now exists for the restored hourly sequential contract
-- the first real decentralized `sumo` baseline under that restored hourly sequential contract now exists at `output/decentralized_sim/dublin_first_cloud_18_hourly_sumo_r1_smoke.json`
-- that baseline completed in about `24m35s` wall clock from the recorded pre-launch timestamp, with site `57` as the clear runtime straggler
+- `scripts/evaluate_routesampler_baseline.py`
+- `scripts/build_dublin_affinity_topology.py`
+- `scripts/render_dublin_affinity_dendrogram.py`
+- `scripts/render_dublin_8site_round_scaling.py`
+- `scripts/render_dublin_paper_visualizations.py`
+- `scripts/render_dublin_voronoi_static_map.py`
+- `scripts/render_site95_anchor_bar_chart.py`
+- `scripts/render_site95_anchor_story.py`
 
-## Reference to the Paper
+Experiment notes and run logs are tracked in:
 
-This code was originally presented in the following publication:
-
-> **Alberto Bazán-Guillén, Carlos Beis-Penedo, Diego Cajaraville-Aboy, Pablo Barbecho-Bautista, Rebeca P. Díaz-Redondo, Luis J. de la Cruz Llopis, Ana Fernández-Vilas, Mónica Aguilar Igartua, Manuel Fernández-Veiga**, *"Realistic Urban Traffic Generator using Decentralized Federated Learning for the SUMO simulator"*, IEEE Open Journal of the Communications Society, ISSN: 2644-125X, 8th August 2025, **DOI:** [10.1109/OJCOMS.2025.3597019](https://ieeexplore.ieee.org/document/11121363).
-
-If you use or modify this code in your research, please cite the paper.
-
-## License
-
-This project is licensed under the GNU GPLv3 License. See `LICENSE`.
+- `8siteExperiments.md`
+- `8siteCentralizedExperiments.md`
+- `18siteExperiments.md`
